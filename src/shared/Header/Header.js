@@ -1,8 +1,15 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { UserAuthContext } from '../../contexts/AuthContext/AuthProvider'
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const { user, userLogout } = useContext(UserAuthContext)
+  const handleLogout = () => {
+    userLogout()
+      .then(() => {})
+      .catch((e) => console.log(e))
+  }
   return (
     <div className='bg-gray-900'>
       <div className='px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8'>
@@ -75,26 +82,43 @@ const Header = () => {
             </li>
           </ul>
           <ul className='flex items-center hidden space-x-8 lg:flex'>
-            <li>
-              <Link
-                to='/signup'
-                className='inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none'
-                aria-label='Sign up'
-                title='Sign up'
-              >
-                Sign up
-              </Link>
-            </li>
-            <li>
-              <Link
-                to='/signin'
-                className='inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none'
-                aria-label='Sign up'
-                title='Sign up'
-              >
-                Sign In
-              </Link>
-            </li>
+            {user?.uid ? (
+              <>
+                <li onClick={handleLogout}>
+                  <Link
+                    to='/signin'
+                    className='inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none'
+                    aria-label='Sign up'
+                    title='Sign up'
+                  >
+                    Logout
+                  </Link>
+                </li>
+              </>
+            ) : (
+              <>
+                <li>
+                  <Link
+                    to='/signup'
+                    className='inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none'
+                    aria-label='Sign up'
+                    title='Sign up'
+                  >
+                    Sign up
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to='/signin'
+                    className='inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none'
+                    aria-label='Sign up'
+                    title='Sign up'
+                  >
+                    Sign In
+                  </Link>
+                </li>
+              </>
+            )}
           </ul>
           <div className='lg:hidden'>
             <button
@@ -207,26 +231,41 @@ const Header = () => {
                           About us
                         </Link>
                       </li>
-                      <li>
-                        <Link
-                          to='/signup'
-                          className='inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none'
-                          aria-label='Sign up'
-                          title='Sign up'
-                        >
-                          Sign up
-                        </Link>
-                      </li>
-                      <li>
+                      {user?.uid ? (
+                        <><li onClick={handleLogout}>
                         <Link
                           to='/signin'
                           className='inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none'
                           aria-label='Sign up'
                           title='Sign up'
                         >
-                          Sign In
+                          Logout
                         </Link>
-                      </li>
+                      </li></>
+                      ) : (
+                        <>
+                          <li>
+                            <Link
+                              to='/signup'
+                              className='inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none'
+                              aria-label='Sign up'
+                              title='Sign up'
+                            >
+                              Sign up
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              to='/signin'
+                              className='inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none'
+                              aria-label='Sign up'
+                              title='Sign up'
+                            >
+                              Sign In
+                            </Link>
+                          </li>
+                        </>
+                      )}
                     </ul>
                   </nav>
                 </div>

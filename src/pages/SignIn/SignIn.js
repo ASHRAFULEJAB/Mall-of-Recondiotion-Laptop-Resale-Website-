@@ -1,7 +1,57 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useContext, useState } from 'react'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { useForm } from 'react-hook-form'
+import { UserAuthContext } from '../../contexts/AuthContext/AuthProvider'
+import { GoogleAuthProvider } from 'firebase/auth'
+import toast from 'react-hot-toast'
 
 const SignIn = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm()
+
+  const { userLogin, userGoogleLogin } = useContext(UserAuthContext)
+  const googleProvider = new GoogleAuthProvider()
+  //   const [loginError, setLoginError] = useState('')
+  const navigate = useNavigate()
+  const location = useLocation()
+  const from = location.state?.from?.pathname || '/'
+  const [loginUser, setLoginUser] = useState('')
+
+  const handleUserLogin = (data) => {
+    console.log(data)
+    userLogin(data.email, data.password)
+      .then((result) => {
+        const user = result.user
+        toast.success('Login Sucessfully')
+          setLoginUser(data.email)
+          navigate(from, { replace: true })
+        console.log(user)
+        // setLoginError('')
+      })
+      .catch((e) => {
+        console.log(e)
+        // setLoginError(e.message)
+      })
+  }
+
+  const handleGoogleLogin = () => {
+    userGoogleLogin(googleProvider)
+      .then((result) => {
+        const user = result.user
+
+        console.log(user)
+        if (user?.uid) {
+          toast.success('login done')
+          navigate(from, { replace: true })
+        }
+      })
+      .catch((e) => {
+        console.log(e)
+      })
+  }
   return (
     <div className='my-3 sm:mx-3'>
       <div className='w-full max-w-sm p-6 m-auto mx-auto bg-white rounded-md shadow-md dark:bg-gray-800'>
@@ -9,7 +59,7 @@ const SignIn = () => {
           Sign In
         </h1>
 
-        <form className='mt-6'>
+        <form onSubmit={handleSubmit(handleUserLogin)} className='mt-6'>
           <div>
             <label
               htmlFor='username'
@@ -18,10 +68,14 @@ const SignIn = () => {
               Email
             </label>
             <input
+              {...register('email', { required: 'Email Address is Required' })}
               type='Email'
               className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40'
             />
           </div>
+          {errors.email && (
+            <p className='text-white'>{errors.email?.message}</p>
+          )}
 
           <div className='mt-4'>
             <div className='flex items-center justify-between'>
@@ -40,11 +94,20 @@ const SignIn = () => {
             </div>
 
             <input
+              {...register('password', {
+                required: 'Password Required',
+                minLength: {
+                  value: 8,
+                  message: 'Password must be 8 characters',
+                },
+              })}
               type='password'
               className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40'
             />
           </div>
-
+          {errors.password && (
+            <p className='text-whote'>{errors.password?.message}</p>
+          )}
           <div className='mt-6'>
             <button className='w-full px-4 py-2 tracking-wide text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600'>
               Login
@@ -67,6 +130,7 @@ const SignIn = () => {
 
         <div className='flex items-center mt-6 -mx-2'>
           <button
+            onClick={handleGoogleLogin}
             type='button'
             className='flex items-center justify-center w-full px-6 py-2 mx-2 text-sm font-medium text-white transition-colors duration-300 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:bg-blue-400 focus:outline-none'
           >

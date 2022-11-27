@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { UserAuthContext } from '../../contexts/AuthContext/AuthProvider'
 import { useForm } from 'react-hook-form'
+import toast from 'react-hot-toast'
 
 const SignUp = () => {
   const {
@@ -45,6 +46,7 @@ const SignUp = () => {
             })
               .then((res) => res.json())
               .then((data) => {
+                toast.success('Registration Done')
                 console.log(data)
                 setLoader(false)
               })
@@ -173,9 +175,9 @@ const SignUp = () => {
             {...register('role')}
             className='select select-bordered w-full max-w-xs mt-2'
           >
-            <option disabled selected>
-              Your Role
-            </option>
+            {/* <option >
+              Buyers
+            </option> */}
 
             {role.map((r, i) => (
               <option key={r.i} value={r}>
