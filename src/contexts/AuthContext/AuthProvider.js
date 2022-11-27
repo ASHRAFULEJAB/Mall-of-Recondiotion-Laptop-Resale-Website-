@@ -14,10 +14,10 @@ const auth = getAuth(app)
 
 export const UserAuthContext = createContext()
 const AuthProvider = ({ children }) => {
-  const [userDoctor, setUserDoctor] = useState(null)
+  const [user, setUser] = useState(null)
   const [loader, setLoader] = useState(true)
 
-  const register = (email, password) => {
+  const SignUp = (email, password) => {
     setLoader(true)
     return createUserWithEmailAndPassword(auth, email, password)
   }
@@ -25,11 +25,11 @@ const AuthProvider = ({ children }) => {
     setLoader(true)
     return signInWithEmailAndPassword(auth, email, password)
   }
-  const GoogleLogin = (provider) => {
+  const userGoogleLogin = (provider) => {
     setLoader(true)
     return signInWithPopup(auth, provider)
   }
-  const updateDoctorProfile = (profile) => {
+  const updateUserProfile = (profile) => {
     setLoader(true)
     return updateProfile(auth.currentUser, profile)
   }
@@ -41,7 +41,7 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUserDoctor(currentUser)
+      setUser(currentUser)
 
       setLoader(false)
     })
@@ -52,13 +52,13 @@ const AuthProvider = ({ children }) => {
 
   const AuthInfo = {
     loader,
-    userDoctor,
+    user,
     setLoader,
-    register,
+    SignUp,
     userLogin,
     userLogout,
-    GoogleLogin,
-    updateDoctorProfile,
+    userGoogleLogin,
+    updateUserProfile,
   }
 
   return (
