@@ -12,7 +12,7 @@ const SignUp = () => {
   } = useForm()
 
   const { SignUp, updateUserProfile, setLoader } = useContext(UserAuthContext)
-  const [signinError, setSigninError] = useState('')
+  const [signupError, setSignupError] = useState('')
   //   const navigate = useNavigate()
   //   const [userCreatedEmail, setUserCreatedeEmail] = useState('')
   const role = ['Buyer', 'Seller']
@@ -24,7 +24,7 @@ const SignUp = () => {
         const user = result.user
         console.log(user)
 
-        setSigninError('')
+        setSignupError('')
         const profile = {
           displayName: data.name,
         }
@@ -57,7 +57,7 @@ const SignUp = () => {
       })
       .catch((e) => {
         console.log(e.message)
-        setSigninError(e.message)
+        setSignupError(e.message)
       })
   }
 
@@ -169,7 +169,7 @@ const SignUp = () => {
           {errors.password && (
             <p className='text-white'>{errors.password?.message}</p>
           )}
-          {signinError && <p className='text-white'>{signinError}</p>}
+          {signupError && <p className='text-white'>{signupError}</p>}
 
           <select
             {...register('role')}

@@ -19,6 +19,7 @@ const SignIn = () => {
   const location = useLocation()
   const from = location.state?.from?.pathname || '/'
   const [loginUser, setLoginUser] = useState('')
+  const [signinError, setSigninError] = useState('')
 
   const handleUserLogin = (data) => {
     console.log(data)
@@ -26,13 +27,15 @@ const SignIn = () => {
       .then((result) => {
         const user = result.user
         toast.success('Login Sucessfully')
-          setLoginUser(data.email)
-          navigate(from, { replace: true })
+        setLoginUser(data.email)
+        toast.success('Login Done')
+        navigate(from, { replace: true })
         console.log(user)
         // setLoginError('')
       })
       .catch((e) => {
         console.log(e)
+        setSigninError(e.message)
         // setLoginError(e.message)
       })
   }
@@ -113,6 +116,7 @@ const SignIn = () => {
               Login
             </button>
           </div>
+          {signinError && <p className='text-white'>{signinError}</p>}
         </form>
 
         <div className='flex items-center justify-between mt-4'>
