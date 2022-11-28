@@ -20,9 +20,9 @@ const Blogs = () => {
                 stroke='currentColor'
               >
                 <path
-                  stroke-linecap='round'
-                  stroke-linejoin='round'
-                  stroke-width='2'
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                  strokeWidth='2'
                   d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z'
                 />
               </svg>
@@ -99,11 +99,16 @@ const Blogs = () => {
                 <span className='text-blue-500 uppercase'>category</span>
 
                 <h1 className='mt-4 text-xl font-semibold  dark:text-gray-800'>
-                How does prototypical inheritance work?
+                  How does prototypical inheritance work?
                 </h1>
 
                 <p className='mt-2  dark:text-gray-900'>
-                The Prototypal Inheritance is a feature in javascript used to add methods and properties in objects. It is a method by which an object can inherit the properties and methods of another object. Traditionally, in order to get and set the [[Prototype]] of an object, we use Object. getPrototypeOf and Object.
+                  The Prototypal Inheritance is a feature in javascript used to
+                  add methods and properties in objects. It is a method by which
+                  an object can inherit the properties and methods of another
+                  object. Traditionally, in order to get and set the
+                  [[Prototype]] of an object, we use Object. getPrototypeOf and
+                  Object.
                 </p>
 
                 <div className='flex items-center justify-between mt-4'>
@@ -141,11 +146,15 @@ const Blogs = () => {
                 <span className='text-blue-500 uppercase'>category</span>
 
                 <h1 className='mt-4 text-xl font-semibold  dark:text-gray-800'>
-                What is a unit test? Why should we write unit tests?
+                  What is a unit test? Why should we write unit tests?
                 </h1>
 
                 <p className='mt-2  dark:text-gray-900'>
-                The main objective of unit testing is to isolate written code to test and determine if it works as intended. Unit testing is an important step in the development process, because if done correctly, it can help detect early flaws in code which may be more difficult to find in later testing stages.
+                  The main objective of unit testing is to isolate written code
+                  to test and determine if it works as intended. Unit testing is
+                  an important step in the development process, because if done
+                  correctly, it can help detect early flaws in code which may be
+                  more difficult to find in later testing stages.
                 </p>
 
                 <div className='flex items-center justify-between mt-4'>
@@ -182,11 +191,15 @@ const Blogs = () => {
                 <span className='text-blue-500 uppercase'>category</span>
 
                 <h1 className='mt-4 text-xl font-semibold  dark:text-gray-800'>
-                React vs. Angular vs. Vue?
+                  React vs. Angular vs. Vue?
                 </h1>
 
                 <p className='mt-2  dark:text-gray-900'>
-                Vue provides higher customizability and hence is easier to learn than Angular or React. Further, Vue has an overlap with Angular and React with respect to their functionality like the use of components. Hence, the transition to Vue from either of the two is an easy option.
+                  Vue provides higher customizability and hence is easier to
+                  learn than Angular or React. Further, Vue has an overlap with
+                  Angular and React with respect to their functionality like the
+                  use of components. Hence, the transition to Vue from either of
+                  the two is an easy option.
                 </p>
 
                 <div className='flex items-center justify-between mt-4'>

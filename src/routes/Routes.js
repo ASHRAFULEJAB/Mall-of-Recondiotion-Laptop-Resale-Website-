@@ -5,6 +5,7 @@ import AllSellers from '../dashboard/AllSellers/AllSellers'
 import DashboardLayout from '../dashboard/DashboardLayout/DashboardLayout'
 import MyOrders from '../dashboard/MyOrders/MyOrders'
 import MyProducts from '../dashboard/MyProducts/MyProducts'
+import ReportedItems from '../dashboard/ReportedItems/ReportedItems'
 import Main from '../layouts/Main'
 import Blogs from '../pages/Blogs/Blogs'
 import Categories from '../pages/Categories/Categories'
@@ -54,7 +55,7 @@ const router = createBrowserRouter([
     element: <DashboardLayout></DashboardLayout>,
     children: [
       {
-        path: '/dashboard',
+        path: '/dashboard/dashboardd',
         element: <MyOrders></MyOrders>,
       },
       {
@@ -70,6 +71,14 @@ const router = createBrowserRouter([
         element: (
           <AdminRoute>
             <AllSellers></AllSellers>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: '/dashboard/reportedItems',
+        element: (
+          <AdminRoute>
+            <ReportedItems></ReportedItems>
           </AdminRoute>
         ),
       },

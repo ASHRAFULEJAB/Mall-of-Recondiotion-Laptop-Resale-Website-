@@ -12,7 +12,7 @@ const HomeDetails = ({ category }) => {
         <Link
           href='#'
           className='block text-2xl font-bold text-gray-800 dark:text-white'
-          tabindex='0'
+          tabIndex='0'
           role='link'
         >
           {name}

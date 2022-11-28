@@ -11,7 +11,7 @@ const AdminRoute = ({ children }) => {
   if (loader || isAdminLoader) {
     return (
       <div
-        className='w-16 h-16 my-5 mx-auto border-4 border-dashed rounded-full animate-spin dark:border-purple-900'
+      className='w-16 h-16 my-5 mx-auto border-4 border-dashed rounded-full animate-spin dark:border-purple-900'
         bis_skin_checked='1'
       ></div>
     )
