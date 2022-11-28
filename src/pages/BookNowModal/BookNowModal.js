@@ -4,7 +4,7 @@ import { UserAuthContext } from '../../contexts/AuthContext/AuthProvider'
 
 const BookNowModal = ({ option, setOption }) => {
   const { user } = useContext(UserAuthContext)
-  const { name, resale_price } = option
+  const { name, resale_price, picture } = option
 
   const handleBookingSubmit = (e) => {
     e.preventDefault()
@@ -23,6 +23,7 @@ const BookNowModal = ({ option, setOption }) => {
       price,
       phone,
       location,
+      picture,
     }
     fetch('http://localhost:5000/orders', {
       method: 'post',
@@ -38,7 +39,7 @@ const BookNowModal = ({ option, setOption }) => {
           toast.success('Item Booked Sucessfully!!')
           setOption(null)
         } else {
-          alert(data.message)
+          toast.error(data.message)
         }
       })
   }
