@@ -1,6 +1,7 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-const CategoriesDetails = ({ category }) => {
+const CategoriesDetails = ({ category,setOption }) => {
   const {
     location,
     name,
@@ -11,6 +12,7 @@ const CategoriesDetails = ({ category }) => {
     years_of_use,
     time,
   } = category
+  // console.log(category)
   return (
     <div className='w-full max-w-sm overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800'>
       <img
@@ -45,7 +47,7 @@ const CategoriesDetails = ({ category }) => {
         </h1>
 
         <p className='py-2 text-gray-700 dark:text-gray-400'>
-          <strong className='text-white text-2xl font-bold'>
+          <strong className='text-white text-xl font-bold'>
             Price:${original_price}/
           </strong>
         </p>
@@ -67,7 +69,7 @@ const CategoriesDetails = ({ category }) => {
           </svg>
 
           <h1 className='px-2 text-sm'>
-            <strong>DiscountedPrice:${resale_price}</strong>
+            <strong className='text-2xl'>DiscountedPrice:${resale_price}</strong>
           </h1>
         </div>
 
@@ -110,7 +112,27 @@ const CategoriesDetails = ({ category }) => {
           </svg>
 
           <h1 className='px-2 text-sm'>Years of use:{years_of_use}/y</h1>
-          <h1 className='px-2 text-sm'>PostedTime: {time}H Ago</h1>
+          <h1 className='px-2 text-sm'>PostedTime: {time} Ago</h1>
+        </div>
+        <div className='mt-2 text-center'>
+          {' '}
+          {/* <Link
+            to=''
+            className='inline-flex items-center justify-center h-10 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-600 hover:bg-purple-700 focus:shadow-outline focus:outline-none'
+            aria-label='Sign up'
+            title='Book Now'
+          >
+            Book Now
+          </Link> */}
+          <label
+            onClick={()=>setOption(category)}
+            htmlFor='booknow-modal'
+            className="inline-flex items-center justify-center h-10 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-600 hover:bg-purple-700 focus:shadow-outline focus:outline-none'
+            aria-label='Sign up'
+            title='Book Now'"
+          >
+            Book Now
+          </label>
         </div>
       </div>
     </div>
