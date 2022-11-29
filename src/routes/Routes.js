@@ -5,6 +5,7 @@ import AllSellers from '../dashboard/AllSellers/AllSellers'
 import DashboardLayout from '../dashboard/DashboardLayout/DashboardLayout'
 import MyOrders from '../dashboard/MyOrders/MyOrders'
 import MyProducts from '../dashboard/MyProducts/MyProducts'
+import Payment from '../dashboard/Payment/Payment'
 import ReportedItems from '../dashboard/ReportedItems/ReportedItems'
 import Main from '../layouts/Main'
 import Blogs from '../pages/Blogs/Blogs'
@@ -97,6 +98,12 @@ const router = createBrowserRouter([
             <MyProducts></MyProducts>
           </SellerRoute>
         ),
+      },
+      {
+        path: '/dashboard/payment/:id',
+        element: <Payment></Payment>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/orders/${params.id}`),
       },
     ],
   },

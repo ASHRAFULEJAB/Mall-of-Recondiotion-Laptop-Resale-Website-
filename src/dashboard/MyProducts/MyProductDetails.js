@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import toast from 'react-hot-toast'
 
-const MyProductDetails = ({ category,refetch }) => {
+const MyProductDetails = ({ category,refetch,order }) => {
     const { itemName, name, price, picture } = category
+    
     const [deletingDoctor, setDeletingDoctor] = useState(null)
     
     const handleDelete = (category) => {
