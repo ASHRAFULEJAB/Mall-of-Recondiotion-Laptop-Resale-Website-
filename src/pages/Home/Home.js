@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import Categories from '../Categories/Categories'
+import Advertise from './Advertise'
+import HeroSection from './HeroSection'
 import HomeDetails from './HomeDetails'
+import HomeSlider from './HomeSlider'
 
 const Home = () => {
   const [homeCategory, setHomeCategory] = useState([])
@@ -29,6 +32,9 @@ const Home = () => {
 
       ))}
           </div> */}
+      <HeroSection></HeroSection>
+      <HomeSlider></HomeSlider>
+      <Advertise></Advertise>
     </>
   )
 }
