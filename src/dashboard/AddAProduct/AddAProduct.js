@@ -82,31 +82,31 @@ const AddAProduct = () => {
 
   return (
     <div>
-      <div class='block p-6 rounded-lg shadow-lg mx-auto mt-6 bg-white max-w-md'>
+      <div className='block p-6 rounded-lg shadow-lg mx-auto mt-6 bg-white max-w-md'>
         <form onSubmit={handleAddProduct}>
-          <div class='form-group mb-6'>
+          <div className='form-group mb-6'>
             <input
               name='name'
               type='text'
-              class='form-control block  w-full  px-3  py-1.5  text-base  font-normal  text-gray-700  bg-white bg-clip-padding  border border-solid border-gray-300  rounded  transition  ease-in-out  m-0  focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'
+              className='form-control block  w-full  px-3  py-1.5  text-base  font-normal  text-gray-700  bg-white bg-clip-padding  border border-solid border-gray-300  rounded  transition  ease-in-out  m-0  focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'
               id='exampleInput7'
               placeholder='Name'
             />
           </div>
-          <div class='form-group mb-6'>
+          <div className='form-group mb-6'>
             <input
               name='original_price'
               type='text'
-              class='form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out  m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'
+              className='form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out  m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'
               id='exampleInput8'
               placeholder='original price'
             />
           </div>
-          <div class='form-group mb-6'>
+          <div className='form-group mb-6'>
             <input
               name='resale_price'
               type='text'
-              class='form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out  m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'
+              className='form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out  m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'
               id='exampleInput8'
               placeholder='Resale price'
             />
@@ -125,29 +125,29 @@ const AddAProduct = () => {
               </option>
             ))}
           </select>
-          <div class='form-group mb-6'>
+          <div className='form-group mb-6'>
             <input
               name='image'
               type='file'
-              class='form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out  m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'
+              className='form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out  m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'
               id='exampleInput8'
               placeholder='Enter Your Photo'
             />
           </div>
-          <div class='form-group mb-6'>
+          <div className='form-group mb-6'>
             <input
               name='phone'
               type='text'
-              class='form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out  m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'
+              className='form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out  m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'
               id='exampleInput8'
               placeholder='Phone Number'
             />
           </div>
-          <div class='form-group mb-6'>
+          <div className='form-group mb-6'>
             <input
               name='location'
               type='text'
-              class='form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out  m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'
+              className='form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out  m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'
               id='exampleInput8'
               placeholder='Location'
             />
@@ -155,35 +155,35 @@ const AddAProduct = () => {
           <label className='text-red-600 font-bold '>
             You Must Add Category Id Between 01,02,03,04,05,06
           </label>
-          <div class='form-group mb-6'>
+          <div className='form-group mb-6'>
             <input
               name='category_id'
               type='text'
-              class='form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out  m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'
+              className='form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out  m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'
               id='exampleInput8'
               placeholder='category_id must be in 0(number) format like 02'
             />
           </div>
-          <div class='form-group mb-6'>
+          <div className='form-group mb-6'>
             <input
               name='years_of_use'
               type='text'
-              class='form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out  m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'
+              className='form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out  m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'
               id='exampleInput8'
               placeholder='Year of purchase'
             />
           </div>
-          <div class='form-group mb-6'>
+          <div className='form-group mb-6'>
             <textarea
               name='message'
-              class=' form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+              className=' form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
       '
               id='exampleFormControlTextarea13'
               rows='3'
               placeholder='Message'
             ></textarea>
           </div>
-          <div class='form-group form-check text-center mb-6'></div>
+          <div className='form-group form-check text-center mb-6'></div>
           <button
             type='submit'
             className=' w-full inline-flex items-center justify-center h-10 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-600 hover:bg-purple-700 focus:shadow-outline focus:outline-none'

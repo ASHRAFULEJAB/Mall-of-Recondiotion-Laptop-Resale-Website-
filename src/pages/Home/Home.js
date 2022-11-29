@@ -11,7 +11,7 @@ const Home = () => {
     fetch('http://localhost:5000/categoryName')
       .then((res) => res.json())
       .then((data) => {
-        console.log(data)
+        
         setHomeCategory(data)
       })
   }, [])

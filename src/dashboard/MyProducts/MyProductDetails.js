@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import toast from 'react-hot-toast'
 
 const MyProductDetails = ({ category,refetch }) => {
     const { itemName, name, price, picture } = category
@@ -19,7 +20,22 @@ const MyProductDetails = ({ category,refetch }) => {
             }
             console.log(data)
           })
-      }
+    }
+    const handleAdverrtise = (category) => {
+        fetch('http://localhost:5000/advertise', {
+              method: 'post',
+              headers: {
+                'content-type': 'application/json',
+              },
+              body: JSON.stringify(category),
+            })
+              .then((res) => res.json())
+              .then((data) => {
+                toast.success('Advertisement Done')
+                console.log(data)
+                // setLoader(false)
+              })
+    }
   return (
     <tr>
       <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
@@ -49,7 +65,7 @@ const MyProductDetails = ({ category,refetch }) => {
           ></span>
           <span className='relative'>
             <button onClick={()=>handleDelete(category)} className='btn btn-xs btn-error mr-2'>Delete</button>
-            <button className='btn btn-xs btn-warning'>Advertise</button>
+            <button onClick={()=>handleAdverrtise(category)} className='btn btn-xs btn-warning'>Advertise</button>
           </span>
         </span>
       </td>
