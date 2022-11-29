@@ -1,19 +1,83 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import toast from 'react-hot-toast'
+import { useNavigate } from 'react-router-dom'
+import { UserAuthContext } from '../../contexts/AuthContext/AuthProvider'
 
 const AddAProduct = () => {
   const condition = ['excellent', 'good', 'fair']
+  const imagebbKEY = process.env.REACT_APP_IMAGEBB_KEY
+  const navigate = useNavigate()
+  const { user } = useContext(UserAuthContext)
+
   const handleAddProduct = (e) => {
     e.preventDefault()
     const form = e.target
     const name = form.name.value
     const condition = form.condition.value
-    const price = form.price.value
+    const resale_price = form.resale_price.value
+    const original_price = form.original_price.value
     const phone = form.phone.value
     const location = form.location.value
-    const category = form.category.value
-    const year = form.year.value
+    const category_id = form.category_id.value
+    const years_of_use = form.years_of_use.value
     const message = form.message.value
-    console.log(name,condition, price, phone, location, category, year, message)
+
+    console.log(
+      name,
+      condition,
+      resale_price,
+      original_price,
+      phone,
+      location,
+      category_id,
+      years_of_use,
+      message
+    )
+    const image = form.image.files[0]
+    const formData = new FormData()
+    formData.append('image', image)
+    // formData.append('img', img)
+    const url = `https://api.imgbb.com/1/upload?key=${imagebbKEY}`
+
+    fetch(url, {
+      method: 'POST',
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((imgData) => {
+        console.log(imgData)
+        if (imgData.success) {
+          console.log(imgData.data.url)
+        }
+        const product = {
+          name,
+          condition,
+          resale_price,
+          original_price,
+          phone,
+          location,
+          category_id,
+          years_of_use,
+          message,
+          picture: imgData.data.url,
+          email: user?.email,
+        }
+
+        fetch(`http://localhost:5000/categories/${category_id}`, {
+          method: 'post',
+          headers: {
+            'content-type': 'application/json',
+            // authorization:`bearer ${localStorage.getItem('accessToken')}`
+          },
+          body: JSON.stringify(product),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data)
+            toast.success(`Product added`)
+            navigate('/dashboard/my-products')
+          })
+      })
   }
 
   return (
@@ -31,11 +95,20 @@ const AddAProduct = () => {
           </div>
           <div class='form-group mb-6'>
             <input
-              name='price'
+              name='original_price'
               type='text'
               class='form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out  m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'
               id='exampleInput8'
-              placeholder='Price'
+              placeholder='original price'
+            />
+          </div>
+          <div class='form-group mb-6'>
+            <input
+              name='resale_price'
+              type='text'
+              class='form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out  m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'
+              id='exampleInput8'
+              placeholder='Resale price'
             />
           </div>
           <select
@@ -54,6 +127,15 @@ const AddAProduct = () => {
           </select>
           <div class='form-group mb-6'>
             <input
+              name='image'
+              type='file'
+              class='form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out  m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'
+              id='exampleInput8'
+              placeholder='Enter Your Photo'
+            />
+          </div>
+          <div class='form-group mb-6'>
+            <input
               name='phone'
               type='text'
               class='form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out  m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'
@@ -70,9 +152,12 @@ const AddAProduct = () => {
               placeholder='Location'
             />
           </div>
+          <label className='text-red-600 font-bold '>
+            You Must Add Category Id Between 01,02,03,04,05,06
+          </label>
           <div class='form-group mb-6'>
             <input
-              name='category'
+              name='category_id'
               type='text'
               class='form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out  m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'
               id='exampleInput8'
@@ -81,7 +166,7 @@ const AddAProduct = () => {
           </div>
           <div class='form-group mb-6'>
             <input
-              name='year'
+              name='years_of_use'
               type='text'
               class='form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out  m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'
               id='exampleInput8'
