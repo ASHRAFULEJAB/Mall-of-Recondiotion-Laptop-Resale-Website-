@@ -1,11 +1,54 @@
-import React from 'react';
+import { useQuery } from '@tanstack/react-query'
+import React, { useEffect, useState } from 'react'
+import AllBuyerDetails from './AllBuyerDetails'
 
 const AllBuyers = () => {
-    return (
-        <div>
-            <h2>r</h2>
-        </div>
-    );
-};
+  const [allBuyer, setAllBuyer] = useState([])
+  const url = 'http://localhost:5000/users'
+  const { data: allBuyers = [], refetch } = useQuery({
+    queryKey: ['allBuyers'],
+    queryFn: async () => {
+      const res = await fetch(url, {
+        // headers: {
+        //   authorization: `bearer ${localStorage.getItem('accessToken')}`,
+        // },
+      })
+      const data = await res.json()
+      return data
+    },
+  })
+  //   useEffect(() => {
+  //     fetch('http://localhost:5000/users')
+  //       .then((res) => res.json())
+  //       .then((data) => {
+  //         console.log(data)
+  //         setAllBuyer(data)
+  //       })
+  //   }, [])
 
-export default AllBuyers;
+  return (
+    <div className='overflow-x-auto'>
+      <table className='table w-full'>
+        <thead>
+          <tr>
+            <th></th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
+          </tr>
+        </thead>
+        <tbody>
+          {allBuyers.map((buyer) => (
+            <AllBuyerDetails
+              key={buyer._id}
+              buyer={buyer}
+              refetch={refetch}
+            ></AllBuyerDetails>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  )
+}
+
+export default AllBuyers

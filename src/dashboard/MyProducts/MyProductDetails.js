@@ -16,7 +16,7 @@ const MyProductDetails = ({ category,refetch }) => {
           .then((data) => {
             if (data.deletedCount) {
               refetch()
-            //   alert(`Doctor ${doctor?.name} has been deleted`)
+              toast.success(`Product ${data?.name} has been deleted`)
             }
             console.log(data)
           })
