@@ -1,7 +1,25 @@
-import React from 'react'
+import { useQuery } from '@tanstack/react-query'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import { UserAuthContext } from '../../contexts/AuthContext/AuthProvider'
+import { CheckBadgeIcon } from '@heroicons/react/24/solid'
 
-const CategoriesDetails = ({ category,setOption,handleReport }) => {
+const CategoriesDetails = ({ category, setOption, handleReport }) => {
+  const { user, setLoader } = useContext(UserAuthContext)
+  const url = `http://localhost:5000/users/${user?.email}`
+  const { data: users = [], refetch } = useQuery({
+    queryKey: ['users', user?.email],
+    queryFn: async () => {
+      const res = await fetch(url, {
+        // headers: {
+        //   authorization: `bearer ${localStorage.getItem('accessToken')}`,
+        // },
+      })
+      const data = await res.json()
+      return data
+    },
+  })
+  console.log(users)
   const {
     location,
     name,
@@ -37,7 +55,15 @@ const CategoriesDetails = ({ category,setOption,handleReport }) => {
         </svg>
 
         <h1 className='mx-3 text-lg font-semibold text-white'>
-          {sellers_name}
+          {users?.isVerfy === true ? (
+            <>
+           
+              <CheckBadgeIcon className='text-white h-5 flex' />
+              {sellers_name}
+            </>
+          ) : (
+            <>{sellers_name}</>
+          )}
         </h1>
       </div>
 
@@ -69,7 +95,9 @@ const CategoriesDetails = ({ category,setOption,handleReport }) => {
           </svg>
 
           <h1 className='px-2 text-sm'>
-            <strong className='text-2xl'>DiscountedPrice:${resale_price}</strong>
+            <strong className='text-2xl'>
+              DiscountedPrice:${resale_price}
+            </strong>
           </h1>
         </div>
 
@@ -125,7 +153,7 @@ const CategoriesDetails = ({ category,setOption,handleReport }) => {
             Book Now
           </Link> */}
           <label
-            onClick={()=>setOption(category)}
+            onClick={() => setOption(category)}
             htmlFor='booknow-modal'
             className="inline-flex items-center justify-center h-10 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-600 hover:bg-purple-700 focus:shadow-outline focus:outline-none'
             aria-label='Sign up'
@@ -134,7 +162,7 @@ const CategoriesDetails = ({ category,setOption,handleReport }) => {
             Book Now
           </label>
           <label
-            onClick={()=>handleReport(category)}
+            onClick={() => handleReport(category)}
             htmlFor='booknow-modal'
             className=" mt-3 inline-flex items-center justify-center h-10 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-600 hover:bg-purple-700 focus:shadow-outline focus:outline-none'
             aria-label='Sign up'

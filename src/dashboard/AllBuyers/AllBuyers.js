@@ -17,14 +17,6 @@ const AllBuyers = () => {
       return data
     },
   })
-  //   useEffect(() => {
-  //     fetch('http://localhost:5000/users')
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         console.log(data)
-  //         setAllBuyer(data)
-  //       })
-  //   }, [])
 
   return (
     <div className='overflow-x-auto'>
