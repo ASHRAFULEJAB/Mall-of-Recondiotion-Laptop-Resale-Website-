@@ -14,6 +14,7 @@ import ErrorPage from '../pages/ErrorPage/ErrorPage'
 import Home from '../pages/Home/Home'
 import SignIn from '../pages/SignIn/SignIn'
 import SignUp from '../pages/SignUp/SignUp'
+import PrivateRoute from '../PrivateRoute/PrivateRoute'
 import AdminRoute from './AdminRoute'
 import SellerRoute from './SellerRoute'
 
@@ -29,7 +30,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/categories/:id',
-        element: <Categories></Categories>,
+        element: <PrivateRoute><Categories></Categories></PrivateRoute>,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/categories/${params.id}`),
       },

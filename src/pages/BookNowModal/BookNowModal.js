@@ -29,6 +29,9 @@ const BookNowModal = ({ option, setOption }) => {
       method: 'post',
       headers: {
         'content-type': 'application/json',
+        headers: {
+          authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
       },
       body: JSON.stringify(orders),
     })

@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form'
 import { UserAuthContext } from '../../contexts/AuthContext/AuthProvider'
 import { GoogleAuthProvider } from 'firebase/auth'
 import toast from 'react-hot-toast'
+import { setAuthToken } from '../../hooks/useToken'
 
 const SignIn = () => {
   const {
@@ -18,8 +19,15 @@ const SignIn = () => {
   const navigate = useNavigate()
   const location = useLocation()
   const from = location.state?.from?.pathname || '/'
-  const [loginUser, setLoginUser] = useState('')
   const [signinError, setSigninError] = useState('')
+
+
+  //token jwt
+  // const [loginToken, setLoginToken] = useState('')
+  // const [token] = useToken(loginToken)
+  // if (token) {
+  //   navigate(from, { replace: true })
+  // }
 
   const handleUserLogin = (data) => {
     console.log(data)
@@ -27,8 +35,7 @@ const SignIn = () => {
       .then((result) => {
         const user = result.user
         toast.success('Login Sucessfully')
-        setLoginUser(data.email)
-        toast.success('Login Done')
+        setAuthToken(user)
         navigate(from, { replace: true })
         console.log(user)
         // setLoginError('')
@@ -44,7 +51,7 @@ const SignIn = () => {
     userGoogleLogin(googleProvider)
       .then((result) => {
         const user = result.user
-
+         setAuthToken(user)
         console.log(user)
         if (user?.uid) {
           toast.success('login done')

@@ -1,8 +1,10 @@
 import React, { useContext, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { UserAuthContext } from '../../contexts/AuthContext/AuthProvider'
 import { useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
+import { setAuthToken } from '../../hooks/useToken'
+
 
 const SignUp = () => {
   const {
@@ -13,6 +15,13 @@ const SignUp = () => {
 
   const { SignUp, updateUserProfile, setLoader } = useContext(UserAuthContext)
   const [signupError, setSignupError] = useState('')
+
+  // const[userEmail,setUserEmail]=useState('')
+  // const [userToken] = useToken(userEmail)
+  // if (userToken) {
+  //   Navigate('/')
+  // }
+
   //   const navigate = useNavigate()
   //   const [userCreatedEmail, setUserCreatedeEmail] = useState('')
   const role = ['Buyer', 'Seller']
@@ -48,6 +57,7 @@ const SignUp = () => {
               .then((data) => {
                 toast.success('Registration Done')
                 console.log(data)
+                setAuthToken(data)
                 setLoader(false)
               })
           })
