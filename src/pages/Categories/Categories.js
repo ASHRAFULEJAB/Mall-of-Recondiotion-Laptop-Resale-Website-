@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import toast from 'react-hot-toast'
 import { useLoaderData } from 'react-router-dom'
 import BookNowModal from '../BookNowModal/BookNowModal'
 import CategoriesDetails from './CategoriesDetails'
@@ -8,6 +9,23 @@ const Categories = () => {
 
   const [option, setOption] = useState(null)
 
+  const handleReport = (category) => {
+    fetch('http://localhost:5000/reportAdmin', {
+              method: 'post',
+              headers: {
+                'content-type': 'application/json',
+              },
+              body: JSON.stringify(category),
+            })
+              .then((res) => res.json())
+              .then((data) => {
+                toast.success('Report to the Admin Done')
+                console.log(data)
+                // setLoader(false)
+              })
+    }
+    
+  
   //   const { category_id } = category
   //   const [categories, setCategories] = useState({})
   //   useEffect(() => {
@@ -26,6 +44,7 @@ const Categories = () => {
             key={category._id}
             category={category}
             setOption={setOption}
+            handleReport={handleReport}
           ></CategoriesDetails>
         ))}
       </div>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const CategoriesDetails = ({ category,setOption }) => {
+const CategoriesDetails = ({ category,setOption,handleReport }) => {
   const {
     location,
     name,
@@ -132,6 +132,15 @@ const CategoriesDetails = ({ category,setOption }) => {
             title='Book Now'"
           >
             Book Now
+          </label>
+          <label
+            onClick={()=>handleReport(category)}
+            htmlFor='booknow-modal'
+            className=" mt-3 inline-flex items-center justify-center h-10 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-600 hover:bg-purple-700 focus:shadow-outline focus:outline-none'
+            aria-label='Sign up'
+            title='Book Now'"
+          >
+            Report To Admin
           </label>
         </div>
       </div>
