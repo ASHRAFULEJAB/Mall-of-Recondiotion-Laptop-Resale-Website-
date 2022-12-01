@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import toast from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
 import { UserAuthContext } from '../../contexts/AuthContext/AuthProvider'
@@ -8,6 +8,7 @@ const AddAProduct = () => {
   const imagebbKEY = process.env.REACT_APP_IMAGEBB_KEY
   const navigate = useNavigate()
   const { user } = useContext(UserAuthContext)
+  
 
   const handleAddProduct = (e) => {
     e.preventDefault()
@@ -21,6 +22,7 @@ const AddAProduct = () => {
     const category_id = form.category_id.value
     const years_of_use = form.years_of_use.value
     const message = form.message.value
+    const product_type='available'
 
     console.log(
       name,
@@ -31,7 +33,8 @@ const AddAProduct = () => {
       location,
       category_id,
       years_of_use,
-      message
+      message,
+  
     )
     const image = form.image.files[0]
     const formData = new FormData()
@@ -59,8 +62,10 @@ const AddAProduct = () => {
           category_id,
           years_of_use,
           message,
+          product_type,
           picture: imgData.data.url,
           email: user?.email,
+          type:'available'
         }
 
         fetch(`http://localhost:5000/categories/${category_id}`, {

@@ -30,7 +30,7 @@ const SignIn = () => {
   // }
 
   const handleUserLogin = (data) => {
-    console.log(data)
+  
     userLogin(data.email, data.password)
       .then((result) => {
         const user = result.user

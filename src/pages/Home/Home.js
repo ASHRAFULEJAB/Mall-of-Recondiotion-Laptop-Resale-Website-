@@ -1,3 +1,4 @@
+import { useQuery } from '@tanstack/react-query'
 import React, { useEffect, useState } from 'react'
 import Categories from '../Categories/Categories'
 import Advertise from './Advertise'
@@ -15,6 +16,19 @@ const Home = () => {
         setHomeCategory(data)
       })
   }, [])
+  // const url = 'http://localhost:5000/orderss'
+  // const { data: orders = [], refetch } = useQuery({
+  //   queryKey: ['orders'],
+  //   queryFn: async () => {
+  //     const res = await fetch(url, {
+  //       // headers: {
+  //       //   authorization: `Bearer ${localStorage.getItem('token')}`,
+  //       // },
+  //     })
+  //     const data = await res.json()
+  //     return data
+  //   },
+  // })
 
   return (
     <>

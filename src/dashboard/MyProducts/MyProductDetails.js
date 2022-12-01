@@ -22,11 +22,13 @@ const MyProductDetails = ({ category,refetch,order }) => {
             console.log(data)
           })
     }
-    const handleAdverrtise = (category) => {
-        fetch('http://localhost:5000/advertise', {
-              method: 'post',
+  const handleAdverrtise = (id) => {
+      console.log(id);
+        fetch(`http://localhost:5000/advertise?id=${id}`, {
+              method: 'put',
               headers: {
                 'content-type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('token')}`,
               },
               body: JSON.stringify(category),
             })
@@ -66,7 +68,7 @@ const MyProductDetails = ({ category,refetch,order }) => {
           ></span>
           <span className='relative'>
             <button onClick={()=>handleDelete(category)} className='btn btn-xs btn-error mr-2'>Delete</button>
-            <button onClick={()=>handleAdverrtise(category)} className='btn btn-xs btn-warning'>Advertise</button>
+            <button onClick={()=>handleAdverrtise(category._id)} className='btn btn-xs btn-warning'>Advertise</button>
           </span>
         </span>
       </td>

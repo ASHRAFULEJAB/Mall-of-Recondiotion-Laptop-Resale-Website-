@@ -5,6 +5,7 @@ import { UserAuthContext } from '../../contexts/AuthContext/AuthProvider'
 const BookNowModal = ({ option, setOption }) => {
   const { user } = useContext(UserAuthContext)
   const { name, resale_price, picture } = option
+  console.log(option)
 
   const handleBookingSubmit = (e) => {
     e.preventDefault()
@@ -15,9 +16,9 @@ const BookNowModal = ({ option, setOption }) => {
     const price = form.price.value
     const phone = form.phone.value
     const location = form.location.value
-    console.log(name, email, itemName, price, phone, location)
     const orders = {
       name,
+      productName: option?.name,
       email,
       itemName,
       price,
@@ -25,6 +26,8 @@ const BookNowModal = ({ option, setOption }) => {
       location,
       picture,
     }
+    // console.log(orders)
+
     fetch('http://localhost:5000/orders', {
       method: 'post',
       headers: {
@@ -53,6 +56,7 @@ const BookNowModal = ({ option, setOption }) => {
       <div className='modal modal-bottom sm:modal-middle'>
         <div className='modal-box'>
           <label
+            onClick={() => setOption(null)}
             htmlFor='booknow-modal'
             className='btn btn-sm btn-circle absolute right-2 top-0'
           >

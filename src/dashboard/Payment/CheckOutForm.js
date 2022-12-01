@@ -11,7 +11,8 @@ const CheckOutForm = ({ order }) => {
   const [transactionId, setTransactionId] = useState('')
   const [processing, setProcessing] = useState(false)
   const [clientSecret, setClientSecret] = useState('')
-  const { price, email, name, _id } = order
+  const { price, email, name, _id, isAvailable, productName } = order
+  console.log(order)
 
   useEffect(() => {
     fetch('http://localhost:5000/create-payment-intent', {
@@ -49,7 +50,7 @@ const CheckOutForm = ({ order }) => {
     setSucess('')
     setTransactionId('')
     setProcessing(true)
-    const { paymentIntent, error:confirmationError } =
+    const { paymentIntent, error: confirmationError } =
       await stripe.confirmCardPayment(clientSecret, {
         payment_method: {
           card: card,
@@ -70,8 +71,8 @@ const CheckOutForm = ({ order }) => {
       orderId: _id,
     }
     if (paymentIntent.status === 'succeeded') {
-      fetch('http://localhost:5000/payments', {
-        method: 'POST',
+      fetch(`http://localhost:5000/payments?productName=${productName}`, {
+        method: 'put',
         headers: {
           'Content-Type': 'application/json',
           //   authorization: `bearer ${localStorage.getItem('accessToken')}`,
@@ -86,6 +87,14 @@ const CheckOutForm = ({ order }) => {
               'Congratulation you payment has been completed.Thnaks!'
             )
             setTransactionId(paymentIntent?.id)
+
+            fetch(`http://localhost:5000/payments/update?id=${_id}`, {
+              method: 'put',
+              headers: {
+                'Content-Type': 'application/json',
+                //   authorization: `bearer ${localStorage.getItem('accessToken')}`,
+              },
+            })
           }
         })
     }
@@ -116,7 +125,7 @@ const CheckOutForm = ({ order }) => {
         <button
           className='btn btn-xs btn-primary mt-4'
           type='submit'
-          disabled={!stripe }
+          disabled={!stripe}
         >
           Pay
         </button>

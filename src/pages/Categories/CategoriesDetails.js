@@ -19,7 +19,7 @@ const CategoriesDetails = ({ category, setOption, handleReport }) => {
       return data
     },
   })
-  console.log(users)
+  // console.log(users)
   const {
     location,
     name,
@@ -57,7 +57,6 @@ const CategoriesDetails = ({ category, setOption, handleReport }) => {
         <h1 className='mx-3 text-lg font-semibold text-white'>
           {users?.isVerfy === true ? (
             <>
-           
               <CheckBadgeIcon className='text-white h-5 flex' />
               {sellers_name}
             </>
@@ -161,15 +160,17 @@ const CategoriesDetails = ({ category, setOption, handleReport }) => {
           >
             Book Now
           </label>
-          <label
-            onClick={() => handleReport(category)}
-            htmlFor='booknow-modal'
-            className=" mt-3 inline-flex items-center justify-center h-10 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-600 hover:bg-purple-700 focus:shadow-outline focus:outline-none'
+          <div>
+            <label
+              onClick={() => handleReport(category)}
+              htmlFor='booknow-modal'
+              className=" mt-3 inline-flex items-center justify-center h-10 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-600 hover:bg-purple-700 focus:shadow-outline focus:outline-none'
             aria-label='Sign up'
             title='Book Now'"
-          >
-            Report To Admin
-          </label>
+            >
+              Report To Admin
+            </label>
+          </div>
         </div>
       </div>
     </div>

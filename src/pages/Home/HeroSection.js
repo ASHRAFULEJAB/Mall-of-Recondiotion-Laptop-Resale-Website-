@@ -9,27 +9,25 @@ const HeroSection = () => {
             <div className='max-w-xl mb-6'>
               <div>
                 <p className='inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider text-teal-900 uppercase rounded-full bg-teal-400'>
-                  Brand new
+                  Trending Laptop
                 </p>
               </div>
               <h2 className='max-w-lg mb-6 font-sans text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:leading-none'>
-                The quick, brown fox
+                Recondition Mall 
                 <br className='hidden md:block' />
-                jumps over{' '}
+                Specail Offer{' '}
                 <span className='inline-block text-purple-400'>
-                  a lazy dog
+                  is Going On
                 </span>
               </h2>
               <p className='text-base text-gray-700 md:text-lg'>
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-                quae. explicabo.
+                Best Recondition Mall in the Town.Grab you desired product as soon asl Possible.Specal Offer is going on
               </p>
             </div>
             <div className='flex flex-col items-center md:flex-row'>
               <a
                 href='/'
-                className='inline-flex items-center justify-center w-full h-12 px-6 mb-3 font-medium tracking-wide text-white transition duration-200 rounded shadow-md md:w-auto md:mr-4 md:mb-0 bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none'
+                className='inline-flex items-center justify-center w-full h-12 px-6 mb-3 font-medium tracking-wide text-white transition duration-200 rounded shadow-md md:w-auto md:mr-4 md:mb-0 bg-purple-700 hover:bg-purple-700 focus:shadow-outline focus:outline-none'
               >
                 <span className='mr-3'>Start Shopping</span>
                 <svg
@@ -76,7 +74,7 @@ const HeroSection = () => {
               <a
                 href='/'
                 aria-label=''
-                className='inline-flex items-center font-semibold text-gray-800 transition-colors duration-200 hover:text-purple-700'
+                className='inline-flex items-center font-bold text-gray-800 transition-colors duration-200 hover:text-purple-700'
               >
                 Get 15% discount
               </a>

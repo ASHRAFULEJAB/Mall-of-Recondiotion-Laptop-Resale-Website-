@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { UserAuthContext } from '../../contexts/AuthContext/AuthProvider'
 import MyOrderDetails from './MyOrderDetails'
 
@@ -19,7 +19,9 @@ const MyOrders = () => {
       return data
     },
   })
-  console.log(orders)
+ 
+ 
+
   return (
     <div>
       <div className='bg-white p-8 rounded-md w-full'>
@@ -54,6 +56,9 @@ const MyOrders = () => {
                       order={order}
                     ></MyOrderDetails>
                   ))}
+                  {
+
+                  }
                 </tbody>
               </table>
             </div>
