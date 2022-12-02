@@ -27,7 +27,6 @@ const MyProducts = () => {
     )
   }
 
-  
   return (
     <div className='mt-64'>
       <div className='bg-white p-8 rounded-md w-full'>
@@ -65,7 +64,6 @@ const MyProducts = () => {
                       refetch={refetch}
                     ></MyProductDetails>
                   ))}
-                  
                 </tbody>
               </table>
             </div>

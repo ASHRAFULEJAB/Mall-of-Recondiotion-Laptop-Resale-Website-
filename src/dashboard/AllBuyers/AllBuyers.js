@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import React, {  useState } from 'react'
+import React, { useState } from 'react'
 import AllBuyerDetails from './AllBuyerDetails'
 
 const AllBuyers = () => {
@@ -8,9 +8,7 @@ const AllBuyers = () => {
   const { data: allBuyers = [], refetch } = useQuery({
     queryKey: ['allBuyers'],
     queryFn: async () => {
-      const res = await fetch(url, {
-        
-      })
+      const res = await fetch(url, {})
       const data = await res.json()
       return data
     },

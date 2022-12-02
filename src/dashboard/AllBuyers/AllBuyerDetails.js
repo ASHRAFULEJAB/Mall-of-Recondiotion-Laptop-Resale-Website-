@@ -7,7 +7,6 @@ const AllBuyerDetails = ({ buyer, refetch }) => {
       `https://mall-of-recondition-laptops-server.vercel.app/users/${buyer._id}`,
       {
         method: 'delete',
-       
       }
     )
       .then((res) => res.json())

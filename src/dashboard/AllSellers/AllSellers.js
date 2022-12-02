@@ -9,9 +9,7 @@ const AllSellers = () => {
   const { data: allSellers = [], refetch } = useQuery({
     queryKey: ['allSellers'],
     queryFn: async () => {
-      const res = await fetch(url, {
-        
-      })
+      const res = await fetch(url, {})
       const data = await res.json()
       return data
     },
@@ -24,7 +22,6 @@ const AllSellers = () => {
       ></div>
     )
   }
-
 
   return (
     <>

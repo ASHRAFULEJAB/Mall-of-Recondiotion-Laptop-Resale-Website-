@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import toast from 'react-hot-toast'
 
 const MyProductDetails = ({ category, refetch, order }) => {
-  const {  name, resale_price, picture, type, product_type } = category
+  const { name, resale_price, picture, type, product_type } = category
 
   const [deletingDoctor, setDeletingDoctor] = useState(null)
 
@@ -11,7 +11,6 @@ const MyProductDetails = ({ category, refetch, order }) => {
       `https://mall-of-recondition-laptops-server.vercel.app/categories/${category._id}`,
       {
         method: 'delete',
-       
       }
     )
       .then((res) => res.json())
@@ -40,7 +39,6 @@ const MyProductDetails = ({ category, refetch, order }) => {
       .then((data) => {
         toast.success('Advertisement Done')
         console.log(data)
-        
       })
   }
   return (

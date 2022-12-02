@@ -8,9 +8,7 @@ const ReportedItems = () => {
   const { data: reported = [], refetch } = useQuery({
     queryKey: ['reported'],
     queryFn: async () => {
-      const res = await fetch(url, {
-       
-      })
+      const res = await fetch(url, {})
       const data = await res.json()
       return data
     },

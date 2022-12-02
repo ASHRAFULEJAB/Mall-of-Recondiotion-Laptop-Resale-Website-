@@ -11,7 +11,7 @@ const CheckOutForm = ({ order }) => {
   const [transactionId, setTransactionId] = useState('')
   const [processing, setProcessing] = useState(false)
   const [clientSecret, setClientSecret] = useState('')
-  const { price, email, name, _id,  productName } = order
+  const { price, email, name, _id, productName } = order
   console.log(order)
 
   useEffect(() => {
@@ -21,7 +21,6 @@ const CheckOutForm = ({ order }) => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-         
         },
         body: JSON.stringify({ price }),
       }
@@ -80,7 +79,6 @@ const CheckOutForm = ({ order }) => {
           method: 'put',
           headers: {
             'Content-Type': 'application/json',
-           
           },
           body: JSON.stringify(payment),
         }
@@ -100,7 +98,6 @@ const CheckOutForm = ({ order }) => {
                 method: 'put',
                 headers: {
                   'Content-Type': 'application/json',
-                  
                 },
               }
             )

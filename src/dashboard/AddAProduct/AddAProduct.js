@@ -9,20 +9,17 @@ const AddAProduct = () => {
   const imagebbKEY = process.env.REACT_APP_IMAGEBB_KEY
   const navigate = useNavigate()
   const { user } = useContext(UserAuthContext)
- 
 
   const url = `https://mall-of-recondition-laptops-server.vercel.app/users/email?email=${user?.email}`
   const { data: users = [], refetch } = useQuery({
     queryKey: ['users', user?.email],
     queryFn: async () => {
-      const res = await fetch(url, {
-        
-      })
+      const res = await fetch(url, {})
       const data = await res.json()
       return data
     },
   })
-  
+
   const handleAddProduct = (e) => {
     e.preventDefault()
     const form = e.target
@@ -88,7 +85,6 @@ const AddAProduct = () => {
             method: 'post',
             headers: {
               'content-type': 'application/json',
-              
             },
             body: JSON.stringify(product),
           }
@@ -137,8 +133,6 @@ const AddAProduct = () => {
             name='condition'
             className='select select-bordered w-full mb-2'
           >
-           
-
             {condition.map((r, i) => (
               <option key={r.i} value={r}>
                 {r}

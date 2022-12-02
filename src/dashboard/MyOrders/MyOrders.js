@@ -4,7 +4,7 @@ import { UserAuthContext } from '../../contexts/AuthContext/AuthProvider'
 import MyOrderDetails from './MyOrderDetails'
 
 const MyOrders = () => {
-  const { user,  loader } = useContext(UserAuthContext)
+  const { user, loader } = useContext(UserAuthContext)
 
   const url = `https://mall-of-recondition-laptops-server.vercel.app/orders?email=${user?.email}`
   const { data: orders = [] } = useQuery({

@@ -9,7 +9,6 @@ const ReportedDetails = ({ report, refetch }) => {
       `https://mall-of-recondition-laptops-server.vercel.app/reportAdmin/${report._id}`,
       {
         method: 'delete',
-        
       }
     )
       .then((res) => res.json())

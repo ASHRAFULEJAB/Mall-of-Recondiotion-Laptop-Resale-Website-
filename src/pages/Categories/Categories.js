@@ -1,4 +1,4 @@
-import React, {  useState } from 'react'
+import React, { useState } from 'react'
 import toast from 'react-hot-toast'
 import { useLoaderData, useNavigation } from 'react-router-dom'
 import BookNowModal from '../BookNowModal/BookNowModal'
@@ -30,11 +30,9 @@ const Categories = () => {
       .then((data) => {
         toast.success('Report to the Admin Done')
         console.log(data)
-        
       })
   }
 
-  
   return (
     <>
       {' '}

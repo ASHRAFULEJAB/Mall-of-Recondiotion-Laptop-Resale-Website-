@@ -9,7 +9,6 @@ const AllSellerDetails = ({ seller, refetch }) => {
       `https://mall-of-recondition-laptops-server.vercel.app/users/${seller._id}`,
       {
         method: 'delete',
-        
       }
     )
       .then((res) => res.json())
@@ -27,7 +26,6 @@ const AllSellerDetails = ({ seller, refetch }) => {
       `https://mall-of-recondition-laptops-server.vercel.app/users/admin?email=${email}`,
       {
         method: 'put',
-      
       }
     )
       .then((res) => res.json())
