@@ -13,7 +13,7 @@ const Home = () => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:5000/categoryName')
+      .get('https://mall-of-recondition-laptops-server.vercel.app/categoryName')
 
       .then((data) => {
         const homeData = data.data
@@ -21,19 +21,7 @@ const Home = () => {
         setHomeCategory(homeData)
       })
   }, [])
-  // const url = 'http://localhost:5000/orderss'
-  // const { data: orders = [], refetch } = useQuery({
-  //   queryKey: ['orders'],
-  //   queryFn: async () => {
-  //     const res = await fetch(url, {
-  //       // headers: {
-  //       //   authorization: `Bearer ${localStorage.getItem('token')}`,
-  //       // },
-  //     })
-  //     const data = await res.json()
-  //     return data
-  //   },
-  // })
+
   if (naviagtion.state === 'loading') {
     return (
       <div
@@ -50,13 +38,7 @@ const Home = () => {
           <HomeDetails key={category._id} category={category}></HomeDetails>
         ))}
       </div>
-      {/* <div>
-          {homeCategory.map((category) => (
-          
-          <Categories key={category._id} category={category}></Categories>
 
-      ))}
-          </div> */}
       <HeroSection></HeroSection>
       <HomeSlider></HomeSlider>
       <Advertise></Advertise>

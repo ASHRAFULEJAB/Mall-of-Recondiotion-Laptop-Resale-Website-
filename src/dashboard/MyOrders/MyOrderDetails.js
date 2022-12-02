@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const MyOrderDetails = ({ order }) => {
-  const { _id, itemName, name, price, picture } = order
+  const { itemName, name, price, picture } = order
   return (
     <tr>
       <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>

@@ -30,9 +30,15 @@ const router = createBrowserRouter([
       },
       {
         path: '/categories/:id',
-        element: <PrivateRoute><Categories></Categories></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <Categories></Categories>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/categories/${params.id}`),
+          fetch(
+            `https://mall-of-recondition-laptops-server.vercel.app/categories/${params.id}`
+          ),
       },
       {
         path: '/blogs',
@@ -58,7 +64,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/dashboard/dashboardd',
-        element: <MyOrders></MyOrders>,
+        element: <PrivateRoute><MyOrders></MyOrders></PrivateRoute>,
       },
       {
         path: '/dashboard/allbuyers',
@@ -104,7 +110,9 @@ const router = createBrowserRouter([
         path: '/dashboard/payment/:id',
         element: <Payment></Payment>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/orders/${params.id}`),
+          fetch(
+            `https://mall-of-recondition-laptops-server.vercel.app/orders/${params.id}`
+          ),
       },
     ],
   },

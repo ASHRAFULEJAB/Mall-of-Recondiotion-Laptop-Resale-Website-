@@ -1,12 +1,12 @@
 import { useQuery } from '@tanstack/react-query'
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import { UserAuthContext } from '../../contexts/AuthContext/AuthProvider'
 import MyOrderDetails from './MyOrderDetails'
 
 const MyOrders = () => {
-  const { user, setLoader, loader } = useContext(UserAuthContext)
+  const { user,  loader } = useContext(UserAuthContext)
 
-  const url = `http://localhost:5000/orders?email=${user?.email}`
+  const url = `https://mall-of-recondition-laptops-server.vercel.app/orders?email=${user?.email}`
   const { data: orders = [] } = useQuery({
     queryKey: ['orders', user?.email],
     queryFn: async () => {

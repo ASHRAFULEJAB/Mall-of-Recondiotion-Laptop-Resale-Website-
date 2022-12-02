@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, {  useState } from 'react'
 import toast from 'react-hot-toast'
 import { useLoaderData, useNavigation } from 'react-router-dom'
 import BookNowModal from '../BookNowModal/BookNowModal'
@@ -19,7 +19,7 @@ const Categories = () => {
   }
 
   const handleReport = (category) => {
-    fetch('http://localhost:5000/reportAdmin', {
+    fetch('https://mall-of-recondition-laptops-server.vercel.app/reportAdmin', {
       method: 'post',
       headers: {
         'content-type': 'application/json',
@@ -30,19 +30,11 @@ const Categories = () => {
       .then((data) => {
         toast.success('Report to the Admin Done')
         console.log(data)
-        // setLoader(false)
+        
       })
   }
 
-  //   const { category_id } = category
-  //   const [categories, setCategories] = useState({})
-  //   useEffect(() => {
-  //     fetch(`http://localhost:5000/categories/${category_id}`)
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         console.log(data)
-  //       })
-  //   }, [category_id])
+  
   return (
     <>
       {' '}

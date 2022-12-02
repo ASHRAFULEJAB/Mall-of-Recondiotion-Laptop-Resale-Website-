@@ -33,10 +33,13 @@ const Footer = () => {
           </Link>
           <div className='mt-6 lg:max-w-sm'>
             <p className='text-sm text-white'>
-            Mall of Reconditions Goods stands out in this roundup because it’s the resale platform with the most prominent physical presence. 
+              Mall of Reconditions Goods stands out in this roundup because it’s
+              the resale platform with the most prominent physical presence.
             </p>
             <p className='mt-4 text-sm text-white'>
-            With well-known hubs in New York and Chicago and all around the world, it distinguishes itself by crossing the boundary that most resale platforms won’t risk.
+              With well-known hubs in New York and Chicago and all around the
+              world, it distinguishes itself by crossing the boundary that most
+              resale platforms won’t risk.
             </p>
           </div>
         </div>
@@ -112,7 +115,9 @@ const Footer = () => {
             </Link>
           </div>
           <p className='mt-4 text-sm text-gray-500'>
-          Centered around rare kicks, MR Laptops Goods has been the default location for celebs to cop their laptops since it was founded in  2018.
+            Centered around rare kicks, MR Laptops Goods has been the default
+            location for celebs to cop their laptops since it was founded in
+            2018.
           </p>
         </div>
       </div>

@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import toast from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
 import { UserAuthContext } from '../../contexts/AuthContext/AuthProvider'
@@ -9,26 +9,20 @@ const AddAProduct = () => {
   const imagebbKEY = process.env.REACT_APP_IMAGEBB_KEY
   const navigate = useNavigate()
   const { user } = useContext(UserAuthContext)
-  // const verfiy = user?.email === 'Veryfied' ? 'Veryfied' : 'UnVeryfied'
  
-  const url = `http://localhost:5000/users/email?email=${user?.email}`
+
+  const url = `https://mall-of-recondition-laptops-server.vercel.app/users/email?email=${user?.email}`
   const { data: users = [], refetch } = useQuery({
     queryKey: ['users', user?.email],
     queryFn: async () => {
       const res = await fetch(url, {
-        // headers: {
-        //   authorization: `bearer ${localStorage.getItem('accessToken')}`,
-        // },
+        
       })
       const data = await res.json()
       return data
     },
   })
-//   const {verfiy}=users
-//   console.log(users)
-//   if (verfiy === 'Veryfied') {
-//   return verfiy
-// }
+  
   const handleAddProduct = (e) => {
     e.preventDefault()
     const form = e.target
@@ -52,7 +46,7 @@ const AddAProduct = () => {
       location,
       category_id,
       years_of_use,
-      message,
+      message
     )
     const image = form.image.files[0]
     const formData = new FormData()
@@ -88,14 +82,17 @@ const AddAProduct = () => {
         }
         console.log(user?.email)
 
-        fetch(`http://localhost:5000/categories/${category_id}`, {
-          method: 'post',
-          headers: {
-            'content-type': 'application/json',
-            // authorization:`bearer ${localStorage.getItem('accessToken')}`
-          },
-          body: JSON.stringify(product),
-        })
+        fetch(
+          `https://mall-of-recondition-laptops-server.vercel.app/categories/${category_id}`,
+          {
+            method: 'post',
+            headers: {
+              'content-type': 'application/json',
+              
+            },
+            body: JSON.stringify(product),
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             console.log(data)
@@ -140,9 +137,7 @@ const AddAProduct = () => {
             name='condition'
             className='select select-bordered w-full mb-2'
           >
-            {/* <option >
-              Buyers
-            </option> */}
+           
 
             {condition.map((r, i) => (
               <option key={r.i} value={r}>

@@ -4,8 +4,8 @@ import { UserAuthContext } from '../../contexts/AuthContext/AuthProvider'
 import MyProductDetails from './MyProductDetails'
 
 const MyProducts = () => {
-  const { user, setLoader, loader } = useContext(UserAuthContext)
-  const url = `http://localhost:5000/categories?email=${user?.email}`
+  const { user, loader } = useContext(UserAuthContext)
+  const url = `https://mall-of-recondition-laptops-server.vercel.app/categories?email=${user?.email}`
   const { data: categories = [], refetch } = useQuery({
     queryKey: ['categories', user?.email],
     queryFn: async () => {
@@ -27,24 +27,13 @@ const MyProducts = () => {
     )
   }
 
-  //   const urll = `http://localhost:5000/orders?email=${user?.email}`
-  //   const { data: orders = [] } = useQuery({
-  //     queryKey: ['orders', user?.email],
-  //     queryFn: async () => {
-  //       const res = await fetch(urll, {
-  //         //   headers: {
-  //         //     authorization: `bearer ${localStorage.getItem('accessToken')}`,
-  //         //   },
-  //       })
-  //       const data = await res.json()
-  //       return data
-  //     },
-  //   })
-  //   console.log(orders)
+  
   return (
-    <div>
+    <div className='mt-64'>
       <div className='bg-white p-8 rounded-md w-full'>
-        <div className=' flex items-center justify-between pb-6'></div>
+        <div className=' flex items-center justify-between pb-6 font-bold text-2xl'>
+          My Products
+        </div>
         <div>
           <div className='-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto'>
             <div className='inline-block min-w-full shadow rounded-lg overflow-hidden'>
@@ -76,13 +65,7 @@ const MyProducts = () => {
                       refetch={refetch}
                     ></MyProductDetails>
                   ))}
-                  {/* {
-                  orders.map((order) => (
-                    <MyProductDetails
-                      key={order._id}
-                      order={order}
-                    ></MyProductDetails>
-                  ))} */}
+                  
                 </tbody>
               </table>
             </div>

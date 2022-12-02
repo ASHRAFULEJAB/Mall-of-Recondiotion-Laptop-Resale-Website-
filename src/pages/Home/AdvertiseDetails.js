@@ -114,16 +114,9 @@ const AdvertiseDetails = ({ advertis }) => {
           </div>
           <div className='mt-2 text-center'>
             {' '}
-            {/* <Link
-              to=''
-              className='inline-flex items-center justify-center h-10 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-600 hover:bg-purple-700 focus:shadow-outline focus:outline-none'
-              aria-label='Sign up'
-              title='Book Now'
-            >
-              Book Now
-            </Link> */}
+            
             <label
-            //   onClick={()=>setOption(category)}
+            
               htmlFor='booknow-modal'
               className="inline-flex items-center justify-center h-10 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-600 hover:bg-purple-700 focus:shadow-outline focus:outline-none'
               aria-label='Sign up'

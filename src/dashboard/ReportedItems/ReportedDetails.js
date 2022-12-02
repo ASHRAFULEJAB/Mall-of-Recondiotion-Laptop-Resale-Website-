@@ -1,28 +1,29 @@
-import React from 'react';
-import toast from 'react-hot-toast';
+import React from 'react'
+import toast from 'react-hot-toast'
 
 const ReportedDetails = ({ report, refetch }) => {
-    console.log(report)
-    const { name, price, picture, resale_price, location } = report
-    const handleDelete = (report) => {
-        fetch(`http://localhost:5000/reportAdmin/${report._id}`, {
-          method: 'delete',
-        //   headers: {
-        //     authorization: `bearer ${localStorage.getItem('accessToken')}`,
-        //   },
-        })
-          .then((res) => res.json())
-            .then((data) => {
-              console.log(data);
-            if (data.deletedCount) {
-              refetch()
-              toast.success(`Report  has been deleted`)
-            }
-            console.log(data)
-          })
-    }
-    return (
-        <tr>
+  console.log(report)
+  const { name, price, picture, resale_price, location } = report
+  const handleDelete = (report) => {
+    fetch(
+      `https://mall-of-recondition-laptops-server.vercel.app/reportAdmin/${report._id}`,
+      {
+        method: 'delete',
+        
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data)
+        if (data.deletedCount) {
+          refetch()
+          toast.success(`Report  has been deleted`)
+        }
+        console.log(data)
+      })
+  }
+  return (
+    <tr>
       <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
         <div className='flex items-center'>
           <div className='flex-shrink-0 w-10 h-10'>
@@ -34,7 +35,9 @@ const ReportedDetails = ({ report, refetch }) => {
         </div>
       </td>
       <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-                <p className='text-gray-900 whitespace-no-wrap'><strong className='text-yellow-600'>{ location}</strong></p>
+        <p className='text-gray-900 whitespace-no-wrap'>
+          <strong className='text-yellow-600'>{location}</strong>
+        </p>
       </td>
       <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
         <p className='text-gray-900 whitespace-no-wrap'>Nov 21, 2022</p>
@@ -49,13 +52,17 @@ const ReportedDetails = ({ report, refetch }) => {
             className='absolute inset-0 bg-green-200 opacity-50 rounded-full'
           ></span>
           <span className='relative'>
-            <button onClick={()=>handleDelete(report)} className='btn btn-xs btn-error mr-2'>Delete</button>
-          
+            <button
+              onClick={() => handleDelete(report)}
+              className='btn btn-xs btn-error mr-2'
+            >
+              Delete
+            </button>
           </span>
         </span>
       </td>
     </tr>
-    );
-};
+  )
+}
 
-export default ReportedDetails;
+export default ReportedDetails

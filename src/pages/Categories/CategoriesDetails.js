@@ -1,26 +1,11 @@
-import { useQuery } from '@tanstack/react-query'
+
 import React, { useContext } from 'react'
-import { Link } from 'react-router-dom'
 import { UserAuthContext } from '../../contexts/AuthContext/AuthProvider'
 import { CheckBadgeIcon } from '@heroicons/react/24/solid'
 
 const CategoriesDetails = ({ category, setOption, handleReport }) => {
-  
-  const { user, setLoader } = useContext(UserAuthContext)
-  // const url = `http://localhost:5000/users/${user?.email}`
-  // const { data: users = [], refetch } = useQuery({
-  //   queryKey: ['users', user?.email],
-  //   queryFn: async () => {
-  //     const res = await fetch(url, {
-  //       // headers: {
-  //       //   authorization: `bearer ${localStorage.getItem('accessToken')}`,
-  //       // },
-  //     })
-  //     const data = await res.json()
-  //     return data
-  //   },
-  // })
-  // console.log(users)
+  const { user } = useContext(UserAuthContext)
+
   const {
     location,
     name,
@@ -30,9 +15,9 @@ const CategoriesDetails = ({ category, setOption, handleReport }) => {
     sellers_name,
     years_of_use,
     time,
-    verfiy
+    verfiy,
   } = category
-  // console.log(category)
+ 
   return (
     <div className='w-full max-w-sm overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800'>
       <img
@@ -57,7 +42,7 @@ const CategoriesDetails = ({ category, setOption, handleReport }) => {
         </svg>
 
         <h1 className='mx-3 text-lg font-semibold text-white'>
-          {verfiy === "Veryfied" ? (
+          {verfiy === 'Veryfied' ? (
             <>
               <CheckBadgeIcon className='text-white h-5 flex' />
               {user?.displayName}
@@ -145,14 +130,7 @@ const CategoriesDetails = ({ category, setOption, handleReport }) => {
         </div>
         <div className='mt-2 text-center'>
           {' '}
-          {/* <Link
-            to=''
-            className='inline-flex items-center justify-center h-10 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-600 hover:bg-purple-700 focus:shadow-outline focus:outline-none'
-            aria-label='Sign up'
-            title='Book Now'
-          >
-            Book Now
-          </Link> */}
+          
           <label
             onClick={() => setOption(category)}
             htmlFor='booknow-modal'

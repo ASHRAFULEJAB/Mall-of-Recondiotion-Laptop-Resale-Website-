@@ -13,24 +13,16 @@ const SignIn = () => {
     formState: { errors },
   } = useForm()
 
-  const { userLogin, userGoogleLogin,setLoader } = useContext(UserAuthContext)
+  const { userLogin, userGoogleLogin, setLoader } = useContext(UserAuthContext)
   const googleProvider = new GoogleAuthProvider()
-  //   const [loginError, setLoginError] = useState('')
   const navigate = useNavigate()
   const location = useLocation()
   const from = location.state?.from?.pathname || '/'
   const [signinError, setSigninError] = useState('')
 
-
-  //token jwt
-  // const [loginToken, setLoginToken] = useState('')
-  // const [token] = useToken(loginToken)
-  // if (token) {
-  //   navigate(from, { replace: true })
-  // }
+  
 
   const handleUserLogin = (data) => {
-  
     userLogin(data.email, data.password)
       .then((result) => {
         const user = result.user
@@ -38,12 +30,12 @@ const SignIn = () => {
         setAuthToken(user)
         navigate(from, { replace: true })
         console.log(user)
-        // setLoginError('')
+       
       })
       .catch((e) => {
         console.log(e)
         setSigninError(e.message)
-        // setLoginError(e.message)
+        
       })
   }
 
@@ -51,8 +43,8 @@ const SignIn = () => {
     userGoogleLogin(googleProvider)
       .then((result) => {
         const user = result.user
-        savedUser(user?.displayName,user?.email)
-         setAuthToken(user)
+        savedUser(user?.displayName, user?.email)
+        setAuthToken(user)
         console.log(user)
         if (user?.uid) {
           toast.success('login done')
@@ -64,21 +56,20 @@ const SignIn = () => {
       })
   }
   const savedUser = (name, email) => {
-        const user = { name, email,role:'Buyer' }
-        fetch('http://localhost:5000/users', {
-          method: 'post',
-          headers: {
-            'content-type': 'application/json',
-          },
-          body: JSON.stringify(user),
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            console.log(data)
-            setLoader(false)
-  
-          })
-      }
+    const user = { name, email, role: 'Buyer' }
+    fetch('https://mall-of-recondition-laptops-server.vercel.app/users', {
+      method: 'post',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data)
+        setLoader(false)
+      })
+  }
   return (
     <div className='my-3 sm:mx-3'>
       <div className='w-full max-w-sm p-6 m-auto mx-auto bg-white rounded-md shadow-md dark:bg-gray-800'>
@@ -101,7 +92,7 @@ const SignIn = () => {
             />
           </div>
           {errors.email && (
-            <p className='text-white'>{errors.email?.message}</p>
+            <p className='text-red-600'>{errors.email?.message}</p>
           )}
 
           <div className='mt-4'>
@@ -133,14 +124,14 @@ const SignIn = () => {
             />
           </div>
           {errors.password && (
-            <p className='text-whote'>{errors.password?.message}</p>
+            <p className='text-red-600'>{errors.password?.message}</p>
           )}
           <div className='mt-6'>
             <button className='w-full px-4 py-2 tracking-wide text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600'>
               Login
             </button>
           </div>
-          {signinError && <p className='text-white'>{signinError}</p>}
+          {signinError && <p className='text-red-600'>{signinError}</p>}
         </form>
 
         <div className='flex items-center justify-between mt-4'>
@@ -166,7 +157,7 @@ const SignIn = () => {
               <path d='M12.24 10.285V14.4h6.806c-.275 1.765-2.056 5.174-6.806 5.174-4.095 0-7.439-3.389-7.439-7.574s3.345-7.574 7.439-7.574c2.33 0 3.891.989 4.785 1.849l3.254-3.138C18.189 1.186 15.479 0 12.24 0c-6.635 0-12 5.365-12 12s5.365 12 12 12c6.926 0 11.52-4.869 11.52-11.726 0-.788-.085-1.39-.189-1.989H12.24z'></path>
             </svg>
 
-            <span className='hidden mx-2 sm:inline'>Sign in with Google</span>
+            <span className='hidden mx-2 sm:inline text-gray-900'>Sign in with Google</span>
           </button>
 
           <Link

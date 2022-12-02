@@ -1,16 +1,15 @@
 import { useQuery } from '@tanstack/react-query'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import ReportedDetails from './ReportedDetails'
 
 const ReportedItems = () => {
-  const url = 'http://localhost:5000/reportAdmin'
+  const url =
+    'https://mall-of-recondition-laptops-server.vercel.app/reportAdmin'
   const { data: reported = [], refetch } = useQuery({
     queryKey: ['reported'],
     queryFn: async () => {
       const res = await fetch(url, {
-        // headers: {
-        //   authorization: `bearer ${localStorage.getItem('accessToken')}`,
-        // },
+       
       })
       const data = await res.json()
       return data
@@ -19,7 +18,8 @@ const ReportedItems = () => {
 
   return (
     <div>
-      <div className='bg-white p-8 rounded-md w-full'>
+      <h1 className='text-center font-bold text-6xl mt-3'>Reported Items</h1>
+      <div className='bg-white p-8 rounded-md w-full mt-36'>
         <div className=' flex items-center justify-between pb-6'></div>
         <div>
           <div className='-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto'>

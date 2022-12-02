@@ -26,9 +26,9 @@ const BookNowModal = ({ option, setOption }) => {
       location,
       picture,
     }
-    // console.log(orders)
+   
 
-    fetch('http://localhost:5000/orders', {
+    fetch('https://mall-of-recondition-laptops-server.vercel.app/orders', {
       method: 'post',
       headers: {
         'content-type': 'application/json',

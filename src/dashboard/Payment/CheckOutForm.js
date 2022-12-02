@@ -11,18 +11,21 @@ const CheckOutForm = ({ order }) => {
   const [transactionId, setTransactionId] = useState('')
   const [processing, setProcessing] = useState(false)
   const [clientSecret, setClientSecret] = useState('')
-  const { price, email, name, _id, isAvailable, productName } = order
+  const { price, email, name, _id,  productName } = order
   console.log(order)
 
   useEffect(() => {
-    fetch('http://localhost:5000/create-payment-intent', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        //   authorization: `bearer ${localStorage.getItem('accessToken')}`,
-      },
-      body: JSON.stringify({ price }),
-    })
+    fetch(
+      'https://mall-of-recondition-laptops-server.vercel.app/create-payment-intent',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+         
+        },
+        body: JSON.stringify({ price }),
+      }
+    )
       .then((res) => res.json())
       .then((data) => setClientSecret(data.clientSecret))
   }, [price])
@@ -71,14 +74,17 @@ const CheckOutForm = ({ order }) => {
       orderId: _id,
     }
     if (paymentIntent.status === 'succeeded') {
-      fetch(`http://localhost:5000/payments?productName=${productName}`, {
-        method: 'put',
-        headers: {
-          'Content-Type': 'application/json',
-          //   authorization: `bearer ${localStorage.getItem('accessToken')}`,
-        },
-        body: JSON.stringify(payment),
-      })
+      fetch(
+        `https://mall-of-recondition-laptops-server.vercel.app/payments?productName=${productName}`,
+        {
+          method: 'put',
+          headers: {
+            'Content-Type': 'application/json',
+           
+          },
+          body: JSON.stringify(payment),
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           if (data?.insertedId) {
@@ -88,13 +94,16 @@ const CheckOutForm = ({ order }) => {
             )
             setTransactionId(paymentIntent?.id)
 
-            fetch(`http://localhost:5000/payments/update?id=${_id}`, {
-              method: 'put',
-              headers: {
-                'Content-Type': 'application/json',
-                //   authorization: `bearer ${localStorage.getItem('accessToken')}`,
-              },
-            })
+            fetch(
+              `https://mall-of-recondition-laptops-server.vercel.app/payments/update?id=${_id}`,
+              {
+                method: 'put',
+                headers: {
+                  'Content-Type': 'application/json',
+                  
+                },
+              }
+            )
           }
         })
     }
