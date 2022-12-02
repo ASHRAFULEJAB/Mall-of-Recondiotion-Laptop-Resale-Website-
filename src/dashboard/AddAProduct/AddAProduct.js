@@ -1,3 +1,4 @@
+import { useQuery } from '@tanstack/react-query'
 import React, { useContext, useState } from 'react'
 import toast from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
@@ -8,8 +9,26 @@ const AddAProduct = () => {
   const imagebbKEY = process.env.REACT_APP_IMAGEBB_KEY
   const navigate = useNavigate()
   const { user } = useContext(UserAuthContext)
-  
-
+  // const verfiy = user?.email === 'Veryfied' ? 'Veryfied' : 'UnVeryfied'
+ 
+  const url = `http://localhost:5000/users/email?email=${user?.email}`
+  const { data: users = [], refetch } = useQuery({
+    queryKey: ['users', user?.email],
+    queryFn: async () => {
+      const res = await fetch(url, {
+        // headers: {
+        //   authorization: `bearer ${localStorage.getItem('accessToken')}`,
+        // },
+      })
+      const data = await res.json()
+      return data
+    },
+  })
+//   const {verfiy}=users
+//   console.log(users)
+//   if (verfiy === 'Veryfied') {
+//   return verfiy
+// }
   const handleAddProduct = (e) => {
     e.preventDefault()
     const form = e.target
@@ -22,7 +41,7 @@ const AddAProduct = () => {
     const category_id = form.category_id.value
     const years_of_use = form.years_of_use.value
     const message = form.message.value
-    const product_type='available'
+    const product_type = 'available'
 
     console.log(
       name,
@@ -34,7 +53,6 @@ const AddAProduct = () => {
       category_id,
       years_of_use,
       message,
-  
     )
     const image = form.image.files[0]
     const formData = new FormData()
@@ -65,8 +83,10 @@ const AddAProduct = () => {
           product_type,
           picture: imgData.data.url,
           email: user?.email,
-          type:'available'
+          type: 'available',
+          verfiy: 'Unverified',
         }
+        console.log(user?.email)
 
         fetch(`http://localhost:5000/categories/${category_id}`, {
           method: 'post',

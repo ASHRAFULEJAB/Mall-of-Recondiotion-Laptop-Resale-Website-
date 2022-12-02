@@ -6,19 +6,19 @@ import { CheckBadgeIcon } from '@heroicons/react/24/solid'
 
 const CategoriesDetails = ({ category, setOption, handleReport }) => {
   const { user, setLoader } = useContext(UserAuthContext)
-  const url = `http://localhost:5000/users/${user?.email}`
-  const { data: users = [], refetch } = useQuery({
-    queryKey: ['users', user?.email],
-    queryFn: async () => {
-      const res = await fetch(url, {
-        // headers: {
-        //   authorization: `bearer ${localStorage.getItem('accessToken')}`,
-        // },
-      })
-      const data = await res.json()
-      return data
-    },
-  })
+  // const url = `http://localhost:5000/users/${user?.email}`
+  // const { data: users = [], refetch } = useQuery({
+  //   queryKey: ['users', user?.email],
+  //   queryFn: async () => {
+  //     const res = await fetch(url, {
+  //       // headers: {
+  //       //   authorization: `bearer ${localStorage.getItem('accessToken')}`,
+  //       // },
+  //     })
+  //     const data = await res.json()
+  //     return data
+  //   },
+  // })
   // console.log(users)
   const {
     location,
@@ -29,6 +29,7 @@ const CategoriesDetails = ({ category, setOption, handleReport }) => {
     sellers_name,
     years_of_use,
     time,
+    verfiy
   } = category
   // console.log(category)
   return (
@@ -55,13 +56,13 @@ const CategoriesDetails = ({ category, setOption, handleReport }) => {
         </svg>
 
         <h1 className='mx-3 text-lg font-semibold text-white'>
-          {users?.isVerfy === true ? (
+          {verfiy === "Veryfied" ? (
             <>
               <CheckBadgeIcon className='text-white h-5 flex' />
-              {sellers_name}
+              {user?.displayName}
             </>
           ) : (
-            <>{sellers_name}</>
+            <>{user?.displayName}</>
           )}
         </h1>
       </div>

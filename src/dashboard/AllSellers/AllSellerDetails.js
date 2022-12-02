@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import toast from 'react-hot-toast'
 
-const AllSellerDetails = ({ seller,refetch }) => {
+const AllSellerDetails = ({ seller, refetch }) => {
+  console.log(seller)
     const [isVerify,setIsVerify] = useState(false)
     const handleDelete = (seller) => {
         fetch(`http://localhost:5000/users/${seller._id}`, {
@@ -20,8 +21,8 @@ const AllSellerDetails = ({ seller,refetch }) => {
           })
   }
   // 
-  const handleVerify = (id) => {
-    fetch(`http://localhost:5000/users/admin/${id}`, {
+  const handleVerify = (email) => {
+    fetch(`http://localhost:5000/users/admin?email=${email}`, {
         method: 'put',
         // headers: {
         //     authorization:`bearer ${localStorage.getItem('accessToken')}`
@@ -48,7 +49,7 @@ const AllSellerDetails = ({ seller,refetch }) => {
           <button onClick={()=>handleDelete(seller)} className='btn btn-error btn-xs'>Delete</button>
         </td>
         <td>
-          <button onClick={()=>handleVerify(seller._id)} className='btn btn-sucess btn-xs'>Verify</button>
+          <button onClick={()=>handleVerify(seller?.email)} className='btn btn-sucess btn-xs'>Verify</button>
         </td>
       </tr>
     )

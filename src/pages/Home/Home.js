@@ -1,6 +1,7 @@
-import { useQuery } from '@tanstack/react-query'
+
+import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import Categories from '../Categories/Categories'
+
 import Advertise from './Advertise'
 import HeroSection from './HeroSection'
 import HomeDetails from './HomeDetails'
@@ -9,11 +10,12 @@ import HomeSlider from './HomeSlider'
 const Home = () => {
   const [homeCategory, setHomeCategory] = useState([])
   useEffect(() => {
-    fetch('http://localhost:5000/categoryName')
-      .then((res) => res.json())
+    axios.get('http://localhost:5000/categoryName')
+     
       .then((data) => {
-        
-        setHomeCategory(data)
+        const homeData = data.data
+        console.log(homeData);
+        setHomeCategory(homeData)
       })
   }, [])
   // const url = 'http://localhost:5000/orderss'

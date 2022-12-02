@@ -5,7 +5,7 @@ import AllSellerDetails from './AllSellerDetails'
 const AllSellers = () => {
   const url = 'http://localhost:5000/users'
   const { data: allSellers = [], refetch } = useQuery({
-    queryKey: ['allBuyers'],
+    queryKey: ['allSellers'],
     queryFn: async () => {
       const res = await fetch(url, {
         // headers: {
