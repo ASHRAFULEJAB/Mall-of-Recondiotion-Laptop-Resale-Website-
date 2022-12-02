@@ -4,7 +4,7 @@ import { UserAuthContext } from '../../contexts/AuthContext/AuthProvider'
 import MyProductDetails from './MyProductDetails'
 
 const MyProducts = () => {
-  const { user, setLoader } = useContext(UserAuthContext)
+  const { user, setLoader, loader } = useContext(UserAuthContext)
   const url = `http://localhost:5000/categories?email=${user?.email}`
   const { data: categories = [], refetch } = useQuery({
     queryKey: ['categories', user?.email],
@@ -18,21 +18,29 @@ const MyProducts = () => {
       return data
     },
   })
+  if (loader) {
+    return (
+      <div
+        className='w-16 h-16 my-5 mx-auto border-4 border-dashed rounded-full animate-spin dark:border-purple-900'
+        bis_skin_checked='1'
+      ></div>
+    )
+  }
 
-//   const urll = `http://localhost:5000/orders?email=${user?.email}`
-//   const { data: orders = [] } = useQuery({
-//     queryKey: ['orders', user?.email],
-//     queryFn: async () => {
-//       const res = await fetch(urll, {
-//         //   headers: {
-//         //     authorization: `bearer ${localStorage.getItem('accessToken')}`,
-//         //   },
-//       })
-//       const data = await res.json()
-//       return data
-//     },
-//   })
-//   console.log(orders)
+  //   const urll = `http://localhost:5000/orders?email=${user?.email}`
+  //   const { data: orders = [] } = useQuery({
+  //     queryKey: ['orders', user?.email],
+  //     queryFn: async () => {
+  //       const res = await fetch(urll, {
+  //         //   headers: {
+  //         //     authorization: `bearer ${localStorage.getItem('accessToken')}`,
+  //         //   },
+  //       })
+  //       const data = await res.json()
+  //       return data
+  //     },
+  //   })
+  //   console.log(orders)
   return (
     <div>
       <div className='bg-white p-8 rounded-md w-full'>
@@ -68,7 +76,7 @@ const MyProducts = () => {
                       refetch={refetch}
                     ></MyProductDetails>
                   ))}
-                   {/* {
+                  {/* {
                   orders.map((order) => (
                     <MyProductDetails
                       key={order._id}

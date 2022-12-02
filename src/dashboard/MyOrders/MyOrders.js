@@ -4,7 +4,7 @@ import { UserAuthContext } from '../../contexts/AuthContext/AuthProvider'
 import MyOrderDetails from './MyOrderDetails'
 
 const MyOrders = () => {
-  const { user, setLoader } = useContext(UserAuthContext)
+  const { user, setLoader, loader } = useContext(UserAuthContext)
 
   const url = `http://localhost:5000/orders?email=${user?.email}`
   const { data: orders = [] } = useQuery({
@@ -19,8 +19,14 @@ const MyOrders = () => {
       return data
     },
   })
- 
- 
+  if (loader) {
+    return (
+      <div
+        className='w-16 h-16 my-5 mx-auto border-4 border-dashed rounded-full animate-spin dark:border-purple-900'
+        bis_skin_checked='1'
+      ></div>
+    )
+  }
 
   return (
     <div>
@@ -42,7 +48,7 @@ const MyOrders = () => {
                       Created at
                     </th>
                     <th className='px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider'>
-                     Price
+                      Price
                     </th>
                     <th className='px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider'>
                       Status
@@ -56,9 +62,7 @@ const MyOrders = () => {
                       order={order}
                     ></MyOrderDetails>
                   ))}
-                  {
-
-                  }
+                  {}
                 </tbody>
               </table>
             </div>

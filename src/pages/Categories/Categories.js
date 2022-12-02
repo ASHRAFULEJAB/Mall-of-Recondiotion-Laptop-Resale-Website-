@@ -1,31 +1,39 @@
 import React, { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
-import { useLoaderData } from 'react-router-dom'
+import { useLoaderData, useNavigation } from 'react-router-dom'
 import BookNowModal from '../BookNowModal/BookNowModal'
 import CategoriesDetails from './CategoriesDetails'
 
 const Categories = () => {
   const categories = useLoaderData()
-
+  const naviagtion = useNavigation()
   const [option, setOption] = useState(null)
+
+  if (naviagtion.state === 'loading') {
+    return (
+      <div
+        className=' text-center w-16 h-16 my-5 mx-auto border-4 border-dashed rounded-full animate-spin dark:border-purple-900'
+        bis_skin_checked='1'
+      ></div>
+    )
+  }
 
   const handleReport = (category) => {
     fetch('http://localhost:5000/reportAdmin', {
-              method: 'post',
-              headers: {
-                'content-type': 'application/json',
-              },
-              body: JSON.stringify(category),
-            })
-              .then((res) => res.json())
-              .then((data) => {
-                toast.success('Report to the Admin Done')
-                console.log(data)
-                // setLoader(false)
-              })
-    }
-    
-  
+      method: 'post',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(category),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        toast.success('Report to the Admin Done')
+        console.log(data)
+        // setLoader(false)
+      })
+  }
+
   //   const { category_id } = category
   //   const [categories, setCategories] = useState({})
   //   useEffect(() => {

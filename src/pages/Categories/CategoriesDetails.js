@@ -5,6 +5,7 @@ import { UserAuthContext } from '../../contexts/AuthContext/AuthProvider'
 import { CheckBadgeIcon } from '@heroicons/react/24/solid'
 
 const CategoriesDetails = ({ category, setOption, handleReport }) => {
+  
   const { user, setLoader } = useContext(UserAuthContext)
   // const url = `http://localhost:5000/users/${user?.email}`
   // const { data: users = [], refetch } = useQuery({

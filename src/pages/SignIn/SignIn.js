@@ -13,7 +13,7 @@ const SignIn = () => {
     formState: { errors },
   } = useForm()
 
-  const { userLogin, userGoogleLogin } = useContext(UserAuthContext)
+  const { userLogin, userGoogleLogin,setLoader } = useContext(UserAuthContext)
   const googleProvider = new GoogleAuthProvider()
   //   const [loginError, setLoginError] = useState('')
   const navigate = useNavigate()
@@ -51,6 +51,7 @@ const SignIn = () => {
     userGoogleLogin(googleProvider)
       .then((result) => {
         const user = result.user
+        savedUser(user?.displayName,user?.email)
          setAuthToken(user)
         console.log(user)
         if (user?.uid) {
@@ -62,6 +63,22 @@ const SignIn = () => {
         console.log(e)
       })
   }
+  const savedUser = (name, email) => {
+        const user = { name, email,role:'Buyer' }
+        fetch('http://localhost:5000/users', {
+          method: 'post',
+          headers: {
+            'content-type': 'application/json',
+          },
+          body: JSON.stringify(user),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data)
+            setLoader(false)
+  
+          })
+      }
   return (
     <div className='my-3 sm:mx-3'>
       <div className='w-full max-w-sm p-6 m-auto mx-auto bg-white rounded-md shadow-md dark:bg-gray-800'>
