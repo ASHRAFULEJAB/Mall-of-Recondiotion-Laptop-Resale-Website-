@@ -1,6 +1,3 @@
-* adminEmail: admin@example.com
-
-* adminPassword: 12345678aA@
 
 
 * Projects Features
