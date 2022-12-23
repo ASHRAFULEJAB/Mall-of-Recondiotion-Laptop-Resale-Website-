@@ -37,7 +37,38 @@ const Header = () => {
             </span>
           </Link>
           <ul className='flex items-center hidden space-x-8 lg:flex'>
+            {
+              !user?.uid ?<><li>
+              <Link
+                to='/'
+                aria-label='Our product'
+                title='Our product'
+                className='font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-400'
+              >
+                Home
+              </Link>
+            </li>
+            
             <li>
+              <Link
+                to='/blogs'
+                aria-label='Product pricing'
+                title='Product pricing'
+                className='font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-400'
+              >
+                Blogs
+              </Link>
+            </li>
+            <li>
+              <Link
+                to='/about'
+                aria-label='About us'
+                title='About us'
+                className='font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-400'
+              >
+                About us
+              </Link>
+            </li></> :<><li>
               <Link
                 to='/'
                 aria-label='Our product'
@@ -76,7 +107,9 @@ const Header = () => {
               >
                 About us
               </Link>
-            </li>
+            </li></>
+            }
+            
           </ul>
           <ul className='flex items-center hidden space-x-8 lg:flex'>
             {user?.uid ? (

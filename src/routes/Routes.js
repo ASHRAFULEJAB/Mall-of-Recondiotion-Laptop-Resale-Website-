@@ -7,7 +7,9 @@ import MyOrders from '../dashboard/MyOrders/MyOrders'
 import MyProducts from '../dashboard/MyProducts/MyProducts'
 import Payment from '../dashboard/Payment/Payment'
 import ReportedItems from '../dashboard/ReportedItems/ReportedItems'
+import WelcomeScreen from '../dashboard/WelcomeScreen'
 import Main from '../layouts/Main'
+import About from '../pages/About/About'
 import Blogs from '../pages/Blogs/Blogs'
 import Categories from '../pages/Categories/Categories'
 import ErrorPage from '../pages/ErrorPage/ErrorPage'
@@ -46,7 +48,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/about',
-        element: <Blogs></Blogs>,
+        element: <About></About>,
       },
       {
         path: '/signup',
@@ -60,8 +62,20 @@ const router = createBrowserRouter([
   },
   {
     path: '/dashboard',
-    element: <DashboardLayout></DashboardLayout>,
+    element: (
+      <PrivateRoute>
+        <DashboardLayout></DashboardLayout>
+      </PrivateRoute>
+    ),
     children: [
+      {
+        path: '/dashboard',
+        element: (
+          <PrivateRoute>
+            <WelcomeScreen></WelcomeScreen>
+          </PrivateRoute>
+        ),
+      },
       {
         path: '/dashboard/dashboardd',
         element: (

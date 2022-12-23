@@ -1,4 +1,3 @@
-
 import React, { useContext } from 'react'
 import { UserAuthContext } from '../../contexts/AuthContext/AuthProvider'
 import { CheckBadgeIcon } from '@heroicons/react/24/solid'
@@ -17,16 +16,16 @@ const CategoriesDetails = ({ category, setOption, handleReport }) => {
     time,
     verfiy,
   } = category
- 
+
   return (
-    <div className='w-full max-w-sm overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800'>
+    <div className='w-full max-w-sm overflow-hidden bg-white rounded-lg shadow-2xl dark:bg-gray-800 mb-6'>
       <img
-        className='object-cover object-center w-full h-56'
+        className='object-cover object-center w-96 h-56'
         src={picture}
         alt='avatar'
       />
 
-      <div className='flex items-center px-6 py-3 bg-gray-900'>
+      <div className='flex items-center px-3 py-3 bg-gray-900'>
         <svg
           aria-label='headphones icon'
           className='w-6 h-6 text-white fill-current'
@@ -130,7 +129,6 @@ const CategoriesDetails = ({ category, setOption, handleReport }) => {
         </div>
         <div className='mt-2 text-center'>
           {' '}
-          
           <label
             onClick={() => setOption(category)}
             htmlFor='booknow-modal'

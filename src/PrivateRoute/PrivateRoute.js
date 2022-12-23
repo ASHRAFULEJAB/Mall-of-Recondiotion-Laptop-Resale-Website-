@@ -8,7 +8,7 @@ const PrivateRoute = ({ children }) => {
   if (loader) {
     return (
       <div
-        className='w-16 h-16 c border-4 border-dashed rounded-full animate-spin dark:border-purple-600'
+        className='w-16 h-16 my-5 mx-auto border-4 border-dashed rounded-full animate-spin dark:border-purple-600'
         bis_skin_checked='1'
       ></div>
     )

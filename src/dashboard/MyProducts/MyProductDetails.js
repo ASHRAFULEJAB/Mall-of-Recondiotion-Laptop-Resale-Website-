@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import toast from 'react-hot-toast'
+import { UserAuthContext } from '../../contexts/AuthContext/AuthProvider'
 
 const MyProductDetails = ({ category, refetch, order }) => {
   const { name, resale_price, picture, type, product_type } = category
+  const { loader } = useContext(UserAuthContext)
 
   const [deletingDoctor, setDeletingDoctor] = useState(null)
 
@@ -40,6 +42,14 @@ const MyProductDetails = ({ category, refetch, order }) => {
         toast.success('Advertisement Done')
         console.log(data)
       })
+  }
+  if (loader) {
+    return (
+      <div
+        className='w-16 h-16 my-5 mx-auto border-4 border-dashed rounded-full animate-spin dark:border-purple-900'
+        bis_skin_checked='1'
+      ></div>
+    )
   }
   return (
     <tr>

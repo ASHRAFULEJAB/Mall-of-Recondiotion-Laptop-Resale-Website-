@@ -5,8 +5,8 @@ const HomeDetails = ({ category }) => {
   const { name, img, category_id } = category
 
   return (
-    <div className='w-full max-w-xs overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800'>
-      <img className='object-cover w-full h-56' src={img} alt='avatar' />
+    <div className='w-full max-w-xs overflow-hidden bg-white rounded-lg shadow-2xl dark:bg-gray-800 mx-6'>
+      <img className='object-cover w-full h-56 bg-white' src={img} alt='avatar' />
 
       <div className='py-5 text-center'>
         <Link

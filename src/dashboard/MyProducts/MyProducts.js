@@ -2,6 +2,8 @@ import { useQuery } from '@tanstack/react-query'
 import React, { useContext } from 'react'
 import { UserAuthContext } from '../../contexts/AuthContext/AuthProvider'
 import MyProductDetails from './MyProductDetails'
+import Lottie from 'lottie-react'
+import product from '../../assets/product.json'
 
 const MyProducts = () => {
   const { user, loader } = useContext(UserAuthContext)
@@ -28,8 +30,13 @@ const MyProducts = () => {
   }
 
   return (
-    <div className='mt-64'>
-      <div className='bg-white p-8 rounded-md w-full'>
+    <div>
+      <div className='relative lg:w-1/2'>
+        <div className='w-full lg:w-4/5 lg:ml-auto h-56  sm:h-96'>
+          <Lottie animationData={product} loop={true} />
+        </div>
+      </div>
+      <div className='bg-white p-8 rounded-md w-full mt-16'>
         <div className=' flex items-center justify-between pb-6 font-bold text-2xl'>
           My Products
         </div>

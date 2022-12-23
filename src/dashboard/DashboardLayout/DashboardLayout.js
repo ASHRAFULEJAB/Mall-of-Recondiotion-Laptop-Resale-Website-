@@ -21,7 +21,6 @@ const DashboardLayout = () => {
         <input id='navbar-toogle' type='checkbox' className='drawer-toggle' />
         <div className='drawer-content'>
           <Outlet></Outlet>
-          
         </div>
         <div className='drawer-side '>
           <label htmlFor='navbar-toogle' className='drawer-overlay'></label>
@@ -217,25 +216,24 @@ const DashboardLayout = () => {
                   />
                 </svg>
 
-                <span onClick={handleLogout} className='mx-4 font-medium lg:hidden'>
-                 
-                    <Link
-                      to='/signin'
-                      className='inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none'
-                      aria-label='Sign up'
-                      title='Sign up'
-                    >
-                      Logout
-                    </Link>
-                  
+                <span
+                  onClick={handleLogout}
+                  className='mx-4 font-medium lg:hidden'
+                >
+                  <Link
+                    to='/signin'
+                    className='inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none'
+                    aria-label='Sign up'
+                    title='Sign up'
+                  >
+                    Logout
+                  </Link>
                 </span>
               </Link>
             </nav>
           </div>
-         
         </div>
       </div>
-    
     </div>
   )
 }

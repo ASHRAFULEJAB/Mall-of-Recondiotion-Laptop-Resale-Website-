@@ -36,7 +36,7 @@ const Categories = () => {
   return (
     <>
       {' '}
-      <div className='container  my-3 grid lg:grid-cols-3 md:grid-cols-2 gap-3 sm:grid-cols-1 mx-5 lg:mx-32 md:mx-20'>
+      <div className='container  my-3 grid lg:grid-cols-3 md:grid-cols-2  sm:grid-cols-1  lg:mx-16 md:mx-16 '>
         {categories.map((category) => (
           <CategoriesDetails
             key={category._id}

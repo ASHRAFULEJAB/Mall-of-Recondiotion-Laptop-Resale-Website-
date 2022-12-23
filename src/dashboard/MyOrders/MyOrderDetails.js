@@ -1,8 +1,19 @@
 import React from 'react'
+import { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import { UserAuthContext } from '../../contexts/AuthContext/AuthProvider'
 
 const MyOrderDetails = ({ order }) => {
   const { itemName, name, price, picture } = order
+  const { loader } = useContext(UserAuthContext)
+  if (loader) {
+    return (
+      <div
+        className='w-16 h-10 my-5 mx-auto justify-center items-center border-4 border-dashed rounded-full animate-spin dark:border-purple-900'
+        bis_skin_checked='1'
+      ></div>
+    )
+  }
   return (
     <tr>
       <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
