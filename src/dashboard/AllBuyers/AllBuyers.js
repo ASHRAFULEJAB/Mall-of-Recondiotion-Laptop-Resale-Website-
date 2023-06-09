@@ -16,9 +16,10 @@ const AllBuyers = () => {
 
   return (
     <>
-      <h1 className='text-center font-bold text-6xl mt-3'>All Buyers</h1>
-      <div className='mt-36'>
-        <table className='table w-full'>
+      <div className="text-black mb-20 p-10 bg-black">hdfbgfv</div>
+      <h1 className="text-center font-bold text-6xl mt-3">All Buyers</h1>
+      <div className="mt-36">
+        <table className="table w-full">
           <thead>
             <tr>
               <th></th>
@@ -39,7 +40,7 @@ const AllBuyers = () => {
         </table>
       </div>
     </>
-  )
+  );
 }
 
 export default AllBuyers

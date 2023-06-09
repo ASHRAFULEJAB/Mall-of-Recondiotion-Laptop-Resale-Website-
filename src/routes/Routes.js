@@ -1,37 +1,37 @@
-import { createBrowserRouter } from 'react-router-dom'
-import AddAProduct from '../dashboard/AddAProduct/AddAProduct'
-import AllBuyers from '../dashboard/AllBuyers/AllBuyers'
-import AllSellers from '../dashboard/AllSellers/AllSellers'
-import DashboardLayout from '../dashboard/DashboardLayout/DashboardLayout'
-import MyOrders from '../dashboard/MyOrders/MyOrders'
-import MyProducts from '../dashboard/MyProducts/MyProducts'
-import Payment from '../dashboard/Payment/Payment'
-import ReportedItems from '../dashboard/ReportedItems/ReportedItems'
-import WelcomeScreen from '../dashboard/WelcomeScreen'
-import Main from '../layouts/Main'
-import About from '../pages/About/About'
-import Blogs from '../pages/Blogs/Blogs'
-import Categories from '../pages/Categories/Categories'
-import ErrorPage from '../pages/ErrorPage/ErrorPage'
-import Home from '../pages/Home/Home'
-import SignIn from '../pages/SignIn/SignIn'
-import SignUp from '../pages/SignUp/SignUp'
-import PrivateRoute from '../PrivateRoute/PrivateRoute'
-import AdminRoute from './AdminRoute'
-import SellerRoute from './SellerRoute'
+import { createBrowserRouter } from "react-router-dom";
+import AddAProduct from "../dashboard/AddAProduct/AddAProduct";
+import AllBuyers from "../dashboard/AllBuyers/AllBuyers";
+import AllSellers from "../dashboard/AllSellers/AllSellers";
+import DashboardLayout from "../dashboard/DashboardLayout/DashboardLayout";
+import MyOrders from "../dashboard/MyOrders/MyOrders";
+import MyProducts from "../dashboard/MyProducts/MyProducts";
+import Payment from "../dashboard/Payment/Payment";
+import ReportedItems from "../dashboard/ReportedItems/ReportedItems";
+import WelcomeScreen from "../dashboard/WelcomeScreen";
+import Main from "../layouts/Main";
+import About from "../pages/About/About";
+import Blogs from "../pages/Blogs/Blogs";
+import Categories from "../pages/Categories/Categories";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import Home from "../pages/Home/Home";
+import SignIn from "../pages/SignIn/SignIn";
+import SignUp from "../pages/SignUp/SignUp";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import AdminRoute from "./AdminRoute";
+import SellerRoute from "./SellerRoute";
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     errorElement: <ErrorPage></ErrorPage>,
     element: <Main></Main>,
     children: [
       {
-        path: '/',
+        path: "/",
         element: <Home></Home>,
       },
       {
-        path: '/categories/:id',
+        path: "/categories/:id",
         element: (
           <PrivateRoute>
             <Categories></Categories>
@@ -43,41 +43,33 @@ const router = createBrowserRouter([
           ),
       },
       {
-        path: '/blogs',
+        path: "/blogs",
         element: <Blogs></Blogs>,
       },
       {
-        path: '/about',
+        path: "/about",
         element: <About></About>,
       },
       {
-        path: '/signup',
+        path: "/signup",
         element: <SignUp></SignUp>,
       },
       {
-        path: '/signin',
+        path: "/signin",
         element: <SignIn></SignIn>,
       },
     ],
   },
   {
-    path: '/dashboard',
-    element: (
-      <PrivateRoute>
-        <DashboardLayout></DashboardLayout>
-      </PrivateRoute>
-    ),
+    path: "/dashboard",
+    element: <DashboardLayout></DashboardLayout>,
     children: [
       {
-        path: '/dashboard',
-        element: (
-          <PrivateRoute>
-            <WelcomeScreen></WelcomeScreen>
-          </PrivateRoute>
-        ),
+        path: "/dashboard",
+        element: <WelcomeScreen></WelcomeScreen>,
       },
       {
-        path: '/dashboard/dashboardd',
+        path: "/dashboard/dashboardd",
         element: (
           <PrivateRoute>
             <MyOrders></MyOrders>
@@ -85,7 +77,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: '/dashboard/allbuyers',
+        path: "/dashboard/allbuyers",
         element: (
           <AdminRoute>
             <AllBuyers></AllBuyers>
@@ -93,7 +85,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: '/dashboard/allsellers',
+        path: "/dashboard/allsellers",
         element: (
           <AdminRoute>
             <AllSellers></AllSellers>
@@ -101,7 +93,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: '/dashboard/reportedItems',
+        path: "/dashboard/reportedItems",
         element: (
           <AdminRoute>
             <ReportedItems></ReportedItems>
@@ -109,7 +101,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: '/dashboard/adda-products',
+        path: "/dashboard/adda-products",
         element: (
           <SellerRoute>
             <AddAProduct></AddAProduct>
@@ -117,7 +109,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: '/dashboard/my-products',
+        path: "/dashboard/my-products",
         element: (
           <SellerRoute>
             <MyProducts></MyProducts>
@@ -125,7 +117,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: '/dashboard/payment/:id',
+        path: "/dashboard/payment/:id",
         element: <Payment></Payment>,
         loader: ({ params }) =>
           fetch(
@@ -134,5 +126,5 @@ const router = createBrowserRouter([
       },
     ],
   },
-])
-export default router
+]);
+export default router;

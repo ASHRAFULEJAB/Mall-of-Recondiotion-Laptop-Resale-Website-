@@ -35,8 +35,8 @@ const Categories = () => {
 
   return (
     <>
-      {' '}
-      <div className='container  my-3 grid lg:grid-cols-3 md:grid-cols-2  sm:grid-cols-1  lg:mx-16 md:mx-16 '>
+      <div className="text-black mb-2 p-10 bg-black">hdfbgfv</div>{" "}
+      <div className="container  my-3 grid lg:grid-cols-3 md:grid-cols-2  sm:grid-cols-1 lg:mt-0 mt-10  lg:mx-16 md:mx-16 ">
         {categories.map((category) => (
           <CategoriesDetails
             key={category._id}
@@ -50,7 +50,7 @@ const Categories = () => {
         <BookNowModal option={option} setOption={setOption}></BookNowModal>
       )}
     </>
-  )
+  );
 }
 
 export default Categories
