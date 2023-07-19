@@ -74,7 +74,7 @@ const Header = () => {
                     </Link>
                   </li>
 
-                  <li>
+                  {/* <li>
                     <Link
                       to="/blogs"
                       aria-label="Product pricing"
@@ -84,7 +84,7 @@ const Header = () => {
                     >
                       Blogs
                     </Link>
-                  </li>
+                  </li> */}
                   <li>
                     <Link
                       to="/about"
@@ -128,7 +128,7 @@ const Header = () => {
                       DashBoard
                     </Link>
                   </li>
-                  <li>
+                  {/* <li>
                     <Link
                       to="/blogs"
                       aria-label="Product pricing"
@@ -137,7 +137,7 @@ const Header = () => {
                     >
                       Blogs
                     </Link>
-                  </li>
+                  </li> */}
                   <li>
                     <Link
                       to="/about"
@@ -295,7 +295,7 @@ const Header = () => {
                             DashBoard
                           </Link>
                         </li>
-                        <li>
+                        {/* <li>
                           <Link
                             to="/blogs"
                             aria-label="Product pricing"
@@ -304,7 +304,7 @@ const Header = () => {
                           >
                             Blog
                           </Link>
-                        </li>
+                        </li> */}
                         <li>
                           <Link
                             to="/about"
@@ -333,7 +333,10 @@ const Header = () => {
                             <li>
                               <Link
                                 to="/signup"
-                                className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
+                                className="inline-flex items-center justify-center 
+                                w-full h-12 px-6 font-medium tracking-wide text-white 
+                                transition duration-200 rounded shadow-md bg-purple-400
+                                 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
                                 aria-label="Sign up"
                                 title="Sign up"
                               >

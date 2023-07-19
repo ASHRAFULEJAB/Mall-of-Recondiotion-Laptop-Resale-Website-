@@ -42,10 +42,10 @@ const router = createBrowserRouter([
             `https://mall-of-recondition-laptops-server.vercel.app/categories/${params.id}`
           ),
       },
-      {
-        path: "/blogs",
-        element: <Blogs></Blogs>,
-      },
+      // {
+      //   path: "/blogs",
+      //   element: <Blogs></Blogs>,
+      // },
       {
         path: "/about",
         element: <About></About>,
